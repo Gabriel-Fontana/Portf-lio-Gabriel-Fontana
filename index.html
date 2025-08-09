@@ -1,0 +1,680 @@
+<html lang="pt-br">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Gabriel Fontana
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+      background: white;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    /* Fade-in and slide-up animation */
+    .fade-slide-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-slide-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Slide-in from left */
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    /* Slide-in from right */
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    /* Slide-in from bottom */
+    .slide-in-bottom {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .slide-in-bottom.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Smooth hover transitions */
+    .hover-smooth:hover {
+      transition: all 0.3s ease;
+      transform: scale(1.05);
+      z-index: 10;
+    }
+    /* Social icons hover effect */
+    .social-icon {
+      transition: transform 0.3s ease, color 0.3s ease;
+      color: #374151; /* gray-700 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      background-color: #e5e7eb; /* gray-200 */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-decoration: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .social-icon i {
+      font-size: 28px;
+      line-height: 1;
+    }
+    .social-icon:hover {
+      color: #2563eb; /* blue-600 */
+      background-color: #dbeafe; /* blue-100 */
+      transform: translateY(-4px) scale(1.2);
+      z-index: 10;
+      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+    }
+    /* Button hover effect */
+    .btn-blue-hover {
+      transition: background-color 0.3s ease, color 0.3s ease,
+        transform 0.3s ease;
+    }
+    .btn-blue-hover:hover {
+      background-color: #2563eb;
+      color: white;
+      transform: scale(1.05);
+      z-index: 10;
+    }
+    /* Fix white gap below fixed header */
+    main {
+      margin-top: 64px; /* height of header */
+    }
+    /* Hamburger menu styles */
+    #mobile-menu-button {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      z-index: 60;
+    }
+    #mobile-menu-button span {
+      display: block;
+      height: 3px;
+      background-color: #007bff;
+      border-radius: 2px;
+      transition: background-color 0.3s ease;
+    }
+    #mobile-menu-button:focus {
+      outline: 2px solid #007bff;
+      outline-offset: 2px;
+    }
+    /* Mobile menu panel */
+    #mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 75vw;
+      max-width: 300px;
+      background-color: #007bff; /* Blue background */
+      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    #mobile-menu.open {
+      transform: translateX(0);
+    }
+    /* Overlay behind menu */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 40;
+    }
+    #overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Mobile menu links */
+    #mobile-menu a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 1.25rem 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    #mobile-menu a:hover,
+    #mobile-menu a:focus {
+      background-color: rgba(255 255 255 / 0.3);
+      color: #e0e7ff;
+      outline: none;
+    }
+    /* Show hamburger only on small screens */
+    @media (max-width: 767px) {
+      #mobile-menu-button {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+      }
+    }
+    /* Typing effect container to fix height and prevent vertical shift */
+    .typing-effect {
+      border-right: 2px solid #2563eb;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      font-weight: 800;
+      font-size: 2.5rem;
+      max-width: 10ch;
+      height: 3.25rem; /* fixed height to prevent vertical jump */
+      line-height: 3.25rem;
+      vertical-align: bottom;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 1023px) {
+      main {
+        margin-top: 56px; /* slightly smaller header on tablets */
+      }
+      header nav {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      #mobile-menu {
+        width: 80vw;
+        max-width: 280px;
+        padding: 1.5rem 1rem;
+      }
+    }
+    @media (max-width: 639px) {
+      /* Smaller font sizes for mobile */
+      .typing-effect {
+        font-size: 1.75rem;
+        height: 2.25rem;
+        line-height: 2.25rem;
+        max-width: 8ch;
+      }
+      h1.text-5xl {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+      }
+      h2.text-5xl {
+        font-size: 2rem;
+        line-height: 2.25rem;
+      }
+      h2.text-4xl {
+        font-size: 1.75rem;
+        line-height: 2rem;
+      }
+      p.text-xl {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+      /* Hero image smaller */
+      #hero > div.relative.w-60.h-60 {
+        width: 12rem;
+        height: 12rem;
+        border-width: 3px;
+        box-shadow: 0 0 15px 3px rgba(96, 156, 255, 0.5);
+      }
+      /* Buttons bigger touch targets */
+      .btn-blue-hover {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+        font-size: 1rem !important;
+      }
+      /* Projects grid single column */
+      #projects > div > div.grid {
+        grid-template-columns: 1fr !important;
+      }
+      /* Skills grid 2 columns */
+      #skills ul.grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1.5rem !important;
+      }
+      /* Social icons smaller and spaced */
+      #contact div.flex.justify-center.space-x-14 {
+        gap: 2rem;
+        font-size: 3rem;
+      }
+      /* Header padding smaller */
+      header nav {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      /* Nav links font smaller */
+      nav ul li a {
+        font-size: 0.875rem;
+      }
+    }
+    /* Prevent horizontal scroll on images */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+ </head>
+ <body class="bg-white text-gray-900">
+  <!-- Header -->
+  <header class="w-full border-b border-gray-200 fixed top-0 left-0 z-50 bg-gray-100">
+   <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:px-8 md:py-4" id="navbar">
+    <a aria-label="Logo GF with code icon" class="text-blue-600 font-extrabold text-2xl select-none flex items-center space-x-1" href="#">
+     <span>
+      GF
+     </span>
+     <i class="fas fa-code text-blue-600 text-xl">
+     </i>
+    </a>
+    <ul class="hidden md:flex space-x-10 text-base font-normal text-black select-none">
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none" href="#hero">
+       Início
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none" href="#about">
+       Sobre
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none" href="#skills">
+       Skills
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none" href="#projects">
+       Projetos
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none" href="#contact">
+       Contato
+      </a>
+     </li>
+    </ul>
+    <button aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="true" aria-label="Abrir menu" id="mobile-menu-button" type="button">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </nav>
+  </header>
+  <!-- Mobile menu panel -->
+  <nav aria-label="Mobile menu" id="mobile-menu" tabindex="-1">
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#hero" tabindex="0">
+    Início
+   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#about" tabindex="0">
+    Sobre
+   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#skills" tabindex="0">
+    Skills
+   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#projects" tabindex="0">
+    Projetos
+   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#contact" tabindex="0">
+    Contato
+   </a>
+  </nav>
+  <!-- Overlay -->
+  <div aria-hidden="true" id="overlay" tabindex="-1">
+  </div>
+  <main>
+   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative bg-gradient-to-br from-white to-[#f0f6ff]" id="hero">
+    <!-- Blue circles behind -->
+    <img alt="Decorative large blue blurred circle" aria-hidden="true" class="absolute rounded-full opacity-30 blur-[80px] w-48 h-48 top-28 left-1/2 -translate-x-1/2 pointer-events-none select-none" decoding="async" height="192" loading="lazy" src="https://storage.googleapis.com/a1aa/image/4a9f72a1-1a41-4889-02e4-b6dba9c500fb.jpg" width="192"/>
+    <img alt="Decorative medium blue blurred circle" aria-hidden="true" class="absolute rounded-full opacity-20 blur-[60px] w-32 h-32 top-44 left-1/3 -translate-x-1/2 pointer-events-none select-none" decoding="async" height="128" loading="lazy" src="https://storage.googleapis.com/a1aa/image/b5745534-6202-479a-e519-30a7a54b76ba.jpg" width="128"/>
+    <img alt="Decorative small blue blurred circle" aria-hidden="true" class="absolute rounded-full opacity-20 blur-[60px] w-28 h-28 top-52 right-1/3 pointer-events-none select-none" decoding="async" height="112" loading="lazy" src="https://storage.googleapis.com/a1aa/image/d11ff0f7-0a90-4bea-bb36-fe3d67a007d0.jpg" width="112"/>
+    <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] fade-slide-up visible w-60 h-60 overflow-hidden hover-smooth max-w-[15rem] max-h-[15rem]">
+     <img alt="Portrait of a man smiling wearing a denim shirt on a light background" class="rounded-full w-full h-full object-cover" decoding="async" height="240" loading="lazy" src="perfil.gabriel.png" width="240"/>
+    </div>
+    <div class="max-w-xl text-center fade-slide-up visible px-2 sm:px-0">
+     <h1 class="text-5xl font-extrabold leading-tight text-blue-600 hover-smooth" style="height: 3.25rem">
+      <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text">
+      </span>
+     </h1>
+     <h2 class="text-5xl font-extrabold leading-tight text-black hover-smooth mt-1 sm:mt-0">
+      Gabriel Fontana
+     </h2>
+     <p class="mt-4 text-xl text-gray-600 font-normal hover-smooth max-w-xs sm:max-w-none mx-auto">
+      Front-End Developer
+     </p>
+     <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto">
+     </div>
+     <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
+      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="#" role="button" tabindex="0">
+       Download CV
+      </a>
+      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="#projects" role="button" tabindex="0">
+       Projetos
+      </a>
+     </div>
+    </div>
+   </section>
+   <section aria-label="About me section" class="w-full bg-white py-20 fade-slide-up slide-in-left flex justify-center px-4 sm:px-6" id="about">
+    <div class="max-w-4xl text-center hover-smooth">
+     <h2 class="text-4xl font-extrabold mb-6">
+      Sobre mim
+     </h2>
+     <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+      Olá! Sou Gabriel Fontana, estudante de Engenharia de Software. Sou
+      apaixonado por desenvolvimento web e criar soluções digitais práticas e
+      acessíveis. Valorizo a simplicidade, usabilidade e interfaces intuitivas
+      que realmente ajudam os usuários. Estou sempre aprendendo, focado em
+      front-end e interfaces envolventes. Aqui você verá meus projetos que
+      mostram minha dedicação à tecnologia.
+     </p>
+    </div>
+   </section>
+   <section aria-label="Hard skills section" class="w-full bg-gray-100 py-20 fade-slide-up slide-in-right flex justify-center px-4 sm:px-6" id="skills">
+    <div class="max-w-4xl text-center w-full">
+     <h2 class="text-4xl font-extrabold mb-10 hover-smooth">
+      Hard Skills
+     </h2>
+     <ul class="grid grid-cols-2 sm:grid-cols-5 gap-8 max-w-xl mx-auto text-center" role="list">
+      <li aria-label="HTML skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
+       <i aria-hidden="true" class="fab fa-html5 fa-5x text-orange-600 mb-3">
+       </i>
+       <span class="text-lg font-medium">
+        HTML
+       </span>
+      </li>
+      <li aria-label="CSS skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
+       <i aria-hidden="true" class="fab fa-css3-alt fa-5x text-blue-600 mb-3">
+       </i>
+       <span class="text-lg font-medium">
+        CSS
+       </span>
+      </li>
+      <li aria-label="JavaScript skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
+       <i aria-hidden="true" class="fab fa-js-square fa-5x text-yellow-400 mb-3">
+       </i>
+       <span class="text-lg font-medium">
+        JavaScript
+       </span>
+      </li>
+      <li aria-label="Bootstrap skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
+       <i aria-hidden="true" class="fab fa-bootstrap fa-5x text-purple-600 mb-3">
+       </i>
+       <span class="text-lg font-medium">
+        Bootstrap
+       </span>
+      </li>
+      <li aria-label="React skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
+       <i aria-hidden="true" class="fab fa-react fa-5x text-blue-400 mb-3">
+       </i>
+       <span class="text-lg font-medium">
+        React
+       </span>
+      </li>
+     </ul>
+    </div>
+   </section>
+   <!-- Projects Section -->
+   <section aria-label="Projects section" class="w-full bg-white py-20 fade-slide-up slide-in-bottom flex justify-center px-4 sm:px-6" id="projects">
+    <div class="max-w-7xl w-full">
+     <h2 class="text-4xl font-extrabold mb-12 text-center text-black hover-smooth">
+      Projetos
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto" role="list">
+      <!-- Project Card 1 -->
+      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between fade-slide-up overflow-hidden hover-smooth" role="listitem">
+       <img alt="Imagem ilustrativa do Projeto Alpha mostrando interface de gerenciamento de tarefas" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="preview.ecomerce.png" width="384"/>
+       <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">
+         TechStore E-commerce
+        </h3>
+        <p class="text-gray-600 mb-6 flex-grow">
+         Projeto de uma loja virtual simples e moderna, desenvolvido durante o
+         bootcamp DevClub. Apresenta uma vitrine dinâmica de produtos eletrônicos
+         com filtro funcional por categorias, design responsivo e interação básica
+         utilizando HTML, CSS e JavaScript.
+        </p>
+        <div class="flex space-x-4 mt-auto flex-wrap gap-2">
+         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/TechStore" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fab fa-github">
+          </i>
+          <span>
+           GitHub
+          </span>
+         </a>
+         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://tech-store-sepia.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fas fa-external-link-alt">
+          </i>
+          <span>
+           Ver Projeto
+          </span>
+         </a>
+        </div>
+       </div>
+      </article>
+      <!-- Project Card 2 -->
+      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between fade-slide-up overflow-hidden hover-smooth" role="listitem">
+       <img alt="Imagem ilustrativa do Projeto Beta mostrando gráficos financeiros dinâmicos" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="Calculadora.Web.Responsiva.preview.jpg" width="384"/>
+       <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">
+         Calculadora Web Responsiva
+        </h3>
+        <p class="text-gray-600 mb-6 flex-grow">
+         Projeto de calculadora digital simples, desenvolvido com HTML, CSS e
+         JavaScript.
+        </p>
+        <div class="flex space-x-4 mt-auto flex-wrap gap-2">
+         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/Calculadora" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fab fa-github">
+          </i>
+          <span>
+           GitHub
+          </span>
+         </a>
+         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://calculadora-responsiva.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fas fa-external-link-alt">
+          </i>
+          <span>
+           Ver Projeto
+          </span>
+         </a>
+        </div>
+       </div>
+      </article>
+      <!-- Project Card 3 -->
+      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between fade-slide-up overflow-hidden hover-smooth" role="listitem">
+       <img alt="Imagem ilustrativa do Projeto Gamma mostrando editor de texto rico e sistema de comentários" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="tela.login.preview.png" width="384"/>
+       <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">
+         Formulário de Login Responsivo
+        </h3>
+        <p class="text-gray-600 mb-6 flex-grow">
+         Formulário de login responsivo com layout moderno e adaptável para
+         diferentes dispositivos, desenvolvido com HTML e CSS.
+        </p>
+        <div class="flex space-x-4 mt-auto flex-wrap gap-2">
+         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/formulario-login-css" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fab fa-github">
+          </i>
+          <span>
+           GitHub
+          </span>
+         </a>
+         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://formulario-login-css.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fas fa-external-link-alt">
+          </i>
+          <span>
+           Ver Projeto
+          </span>
+         </a>
+        </div>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section aria-label="Contact section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6" id="contact">
+    <div class="max-w-4xl text-center w-full">
+     <h2 class="text-4xl font-extrabold mb-10 text-blue-600">
+      Bora nos conectar?
+     </h2>
+     <div class="flex justify-center gap-8 flex-wrap" role="list" aria-label="Redes sociais">
+      <a aria-label="Instagram" class="social-icon" href="https://www.instagram.com/mpx.dev/" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
+       <i aria-hidden="true" class="fab fa-instagram">
+       </i>
+      </a>
+      <a aria-label="LinkedIn" class="social-icon" href="https://www.linkedin.com/in/gabriel-fontana-803a84267/" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
+       <i aria-hidden="true" class="fab fa-linkedin">
+       </i>
+      </a>
+      <a aria-label="GitHub" class="social-icon" href="https://github.com/Gabriel-Fontana" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
+       <i aria-hidden="true" class="fab fa-github">
+       </i>
+      </a>
+      <a aria-label="WhatsApp" class="social-icon" href="https://wa.me/5519991163175" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
+       <i aria-hidden="true" class="fab fa-whatsapp">
+       </i>
+      </a>
+     </div>
+    </div>
+   </section>
+  </main>
+  <script>
+   // Intersection Observer for fade-slide-up animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const observerOptions = {
+        threshold: 0.1,
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(
+          ".fade-slide-up, .slide-in-left, .slide-in-right, .slide-in-bottom"
+        )
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Typing effect with typing and deleting loop for "Hi, I'm"
+      const typingText = document.getElementById("typing-text");
+      const text = "Hi, I'm";
+      let index = 0;
+      let isDeleting = false;
+      let speed = 150;
+
+      function type() {
+        if (!isDeleting) {
+          typingText.textContent = text.substring(0, index + 1);
+          index++;
+          if (index === text.length) {
+            isDeleting = true;
+            speed = 1000; // pause before deleting
+          } else {
+            speed = 150;
+          }
+        } else {
+          typingText.textContent = text.substring(0, index - 1);
+          index--;
+          if (index === 0) {
+            isDeleting = false;
+            speed = 500; // pause before typing again
+          } else {
+            speed = 100;
+          }
+        }
+        setTimeout(type, speed);
+      }
+      type();
+    });
+
+    // Mobile menu toggle
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const overlay = document.getElementById("overlay");
+
+    function closeMenu() {
+      mobileMenu.classList.remove("open");
+      overlay.classList.remove("visible");
+      menuButton.setAttribute("aria-expanded", "false");
+    }
+
+    function openMenu() {
+      mobileMenu.classList.add("open");
+      overlay.classList.add("visible");
+      menuButton.setAttribute("aria-expanded", "true");
+      mobileMenu.focus();
+    }
+
+    menuButton.addEventListener("click", () => {
+      if (mobileMenu.classList.contains("open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    overlay.addEventListener("click", closeMenu);
+
+    // Close menu on link click
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    // Accessibility: close menu on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mobileMenu.classList.contains("open")) {
+        closeMenu();
+        menuButton.focus();
+      }
+    });
+  </script>
+ </body>
+</html>
