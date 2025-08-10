@@ -5,8 +5,7 @@
   <title>
    Gabriel Fontana
   </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <style>
@@ -122,33 +121,47 @@
     #mobile-menu-button {
       display: none;
       cursor: pointer;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 20px;
+      position: relative;
+      width: 32px;
+      height: 24px;
       background: transparent;
       border: none;
       padding: 0;
       z-index: 60;
       flex-shrink: 0;
-      transition: border-color 0.3s ease;
-      border: 2px solid transparent;
-      border-radius: 4px;
+      transition: transform 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
     }
     #mobile-menu-button span {
       display: block;
+      position: absolute;
       height: 3px;
-      background-color: #007bff;
+      width: 100%;
+      background-color: #007bff; /* azul */
       border-radius: 2px;
-      transition: background-color 0.3s ease;
+      opacity: 1;
+      left: 0;
+      transition: all 0.3s ease;
+      will-change: transform, opacity;
     }
-    #mobile-menu-button:hover,
-    #mobile-menu-button:focus {
-      border-color: black;
-      outline: none;
+    #mobile-menu-button span:nth-child(1) {
+      top: 0;
     }
-    #mobile-menu-button:focus {
-      outline-offset: 2px;
+    #mobile-menu-button span:nth-child(2) {
+      top: 10px;
+    }
+    #mobile-menu-button span:nth-child(3) {
+      top: 20px;
+    }
+    /* Animate hamburger to X when open */
+    #mobile-menu-button.open span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    #mobile-menu-button.open span:nth-child(2) {
+      opacity: 0;
+    }
+    #mobile-menu-button.open span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
     }
     /* Mobile menu panel */
     #mobile-menu {
@@ -197,24 +210,35 @@
       width: 100%;
       text-align: center;
       padding: 1.25rem 0;
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 700;
       color: white;
-      border-radius: 0.375rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      border-radius: 9999px;
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
       user-select: none;
       touch-action: manipulation;
+      position: relative;
+      margin: 0.5rem 0;
+      box-shadow: 0 0 0 0 transparent;
     }
+    #mobile-menu a span {
+      position: relative;
+      z-index: 10;
+      display: inline-block;
+      padding: 0 0.5rem;
+    }
+    /* Removed black circle behind letters as requested */
     #mobile-menu a:hover,
     #mobile-menu a:focus {
       background-color: rgba(255 255 255 / 0.3);
       color: #e0e7ff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       outline: none;
     }
     /* Show hamburger only on small screens */
     @media (max-width: 767px) {
       #mobile-menu-button {
-        display: flex;
+        display: block;
       }
       nav ul {
         display: none;
@@ -350,8 +374,7 @@
      <span>
       GF
      </span>
-     <i class="fas fa-code text-blue-600 text-xl">
-     </i>
+     <i class="fas fa-code text-blue-600 text-xl"></i>
     </a>
     <ul class="hidden md:flex space-x-10 text-base font-normal text-black select-none">
      <li>
@@ -380,37 +403,23 @@
       </a>
      </li>
     </ul>
-    <button aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="true" aria-label="Abrir menu" id="mobile-menu-button" type="button">
-     <span>
-     </span>
-     <span>
-     </span>
-     <span>
-     </span>
+    <button aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="true" aria-label="Abrir menu" id="mobile-menu-button" type="button" aria-pressed="false">
+     <span></span>
+     <span></span>
+     <span></span>
     </button>
    </nav>
   </header>
   <!-- Mobile menu panel -->
   <nav aria-label="Mobile menu" id="mobile-menu" tabindex="-1">
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#hero" tabindex="0">
-    Início
-   </a>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#about" tabindex="0">
-    Sobre
-   </a>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#skills" tabindex="0">
-    Skills
-   </a>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#projects" tabindex="0">
-    Projetos
-   </a>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#contact" tabindex="0">
-    Contato
-   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#hero" tabindex="0"><span>Início</span></a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#about" tabindex="0"><span>Sobre</span></a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#skills" tabindex="0"><span>Skills</span></a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#projects" tabindex="0"><span>Projetos</span></a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#contact" tabindex="0"><span>Contato</span></a>
   </nav>
   <!-- Overlay -->
-  <div aria-hidden="true" id="overlay" tabindex="-1">
-  </div>
+  <div aria-hidden="true" id="overlay" tabindex="-1"></div>
   <main>
    <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative" id="hero">
     <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] fade-slide-up visible w-60 h-60 overflow-hidden hover-smooth max-w-[15rem] max-h-[15rem]">
@@ -418,8 +427,7 @@
     </div>
     <div class="max-w-xl text-center fade-slide-up visible px-2 sm:px-0">
      <h1 class="text-5xl font-extrabold leading-tight text-blue-600 hover-smooth" style="height: 3.25rem">
-      <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text">
-      </span>
+      <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text"></span>
      </h1>
      <h2 class="text-5xl font-extrabold leading-tight text-black hover-smooth mt-1 sm:mt-0">
       Gabriel Fontana
@@ -427,8 +435,7 @@
      <p class="mt-4 text-xl text-gray-600 font-normal hover-smooth max-w-xs sm:max-w-none mx-auto">
       Front-End Developer
      </p>
-     <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto">
-     </div>
+     <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto"></div>
      <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
       <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="#" role="button" tabindex="0">
        Download CV
@@ -461,39 +468,24 @@
      </h2>
      <ul class="grid grid-cols-2 sm:grid-cols-5 gap-8 max-w-xl mx-auto text-center" role="list">
       <li aria-label="HTML skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-html5 fa-5x text-orange-600 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        HTML
-       </span>
+       <i aria-hidden="true" class="fab fa-html5 fa-5x text-orange-600 mb-3"></i>
+       <span class="text-lg font-medium">HTML</span>
       </li>
       <li aria-label="CSS skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-css3-alt fa-5x text-blue-600 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        CSS
-       </span>
+       <i aria-hidden="true" class="fab fa-css3-alt fa-5x text-blue-600 mb-3"></i>
+       <span class="text-lg font-medium">CSS</span>
       </li>
       <li aria-label="JavaScript skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-js-square fa-5x text-yellow-400 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        JavaScript
-       </span>
+       <i aria-hidden="true" class="fab fa-js-square fa-5x text-yellow-400 mb-3"></i>
+       <span class="text-lg font-medium">JavaScript</span>
       </li>
       <li aria-label="Bootstrap skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-bootstrap fa-5x text-purple-600 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        Bootstrap
-       </span>
+       <i aria-hidden="true" class="fab fa-bootstrap fa-5x text-purple-600 mb-3"></i>
+       <span class="text-lg font-medium">Bootstrap</span>
       </li>
       <li aria-label="React skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-react fa-5x text-blue-400 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        React
-       </span>
+       <i aria-hidden="true" class="fab fa-react fa-5x text-blue-400 mb-3"></i>
+       <span class="text-lg font-medium">React</span>
       </li>
      </ul>
     </div>
@@ -520,18 +512,12 @@
         </p>
         <div class="flex space-x-4 mt-auto flex-wrap gap-2">
          <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/TechStore" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fab fa-github">
-          </i>
-          <span>
-           GitHub
-          </span>
+          <i aria-hidden="true" class="fab fa-github"></i>
+          <span>GitHub</span>
          </a>
          <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://tech-store-sepia.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fas fa-external-link-alt">
-          </i>
-          <span>
-           Ver Projeto
-          </span>
+          <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+          <span>Ver Projeto</span>
          </a>
         </div>
        </div>
@@ -549,18 +535,12 @@
         </p>
         <div class="flex space-x-4 mt-auto flex-wrap gap-2">
          <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/Calculadora" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fab fa-github">
-          </i>
-          <span>
-           GitHub
-          </span>
+          <i aria-hidden="true" class="fab fa-github"></i>
+          <span>GitHub</span>
          </a>
          <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://calculadora-responsiva.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fas fa-external-link-alt">
-          </i>
-          <span>
-           Ver Projeto
-          </span>
+          <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+          <span>Ver Projeto</span>
          </a>
         </div>
        </div>
@@ -578,18 +558,12 @@
         </p>
         <div class="flex space-x-4 mt-auto flex-wrap gap-2">
          <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/formulario-login-css" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fab fa-github">
-          </i>
-          <span>
-           GitHub
-          </span>
+          <i aria-hidden="true" class="fab fa-github"></i>
+          <span>GitHub</span>
          </a>
          <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://formulario-login-css.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fas fa-external-link-alt">
-          </i>
-          <span>
-           Ver Projeto
-          </span>
+          <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+          <span>Ver Projeto</span>
          </a>
         </div>
        </div>
@@ -604,20 +578,16 @@
      </h2>
      <div class="flex justify-center gap-8 flex-wrap" role="list" aria-label="Redes sociais">
       <a aria-label="Instagram" class="social-icon" href="https://www.instagram.com/mpx.dev/" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
-       <i aria-hidden="true" class="fab fa-instagram">
-       </i>
+       <i aria-hidden="true" class="fab fa-instagram"></i>
       </a>
       <a aria-label="LinkedIn" class="social-icon" href="https://www.linkedin.com/in/gabriel-fontana-803a84267/" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
-       <i aria-hidden="true" class="fab fa-linkedin">
-       </i>
+       <i aria-hidden="true" class="fab fa-linkedin"></i>
       </a>
       <a aria-label="GitHub" class="social-icon" href="https://github.com/Gabriel-Fontana" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
-       <i aria-hidden="true" class="fab fa-github">
-       </i>
+       <i aria-hidden="true" class="fab fa-github"></i>
       </a>
       <a aria-label="WhatsApp" class="social-icon" href="https://wa.me/5519991163175" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
-       <i aria-hidden="true" class="fab fa-whatsapp">
-       </i>
+       <i aria-hidden="true" class="fab fa-whatsapp"></i>
       </a>
      </div>
     </div>
@@ -685,14 +655,18 @@
     function closeMenu() {
       mobileMenu.classList.remove("open");
       overlay.classList.remove("visible");
+      menuButton.classList.remove("open");
       menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-pressed", "false");
       document.body.style.overflow = "";
     }
 
     function openMenu() {
       mobileMenu.classList.add("open");
       overlay.classList.add("visible");
+      menuButton.classList.add("open");
       menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-pressed", "true");
       mobileMenu.focus();
       document.body.style.overflow = "hidden";
     }
