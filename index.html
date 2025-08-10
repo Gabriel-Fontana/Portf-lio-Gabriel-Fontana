@@ -74,7 +74,6 @@
     }
     /* Social icons hover effect */
     .social-icon {
-      transition: transform 0.3s ease, color 0.3s ease;
       color: #374151; /* gray-700 */
       display: flex;
       align-items: center;
@@ -88,17 +87,11 @@
       user-select: none;
       -webkit-tap-highlight-color: transparent;
       flex-shrink: 0;
+      /* Removed transition and hover transform */
     }
     .social-icon i {
       font-size: 28px;
       line-height: 1;
-    }
-    .social-icon:hover {
-      color: #2563eb; /* blue-600 */
-      background-color: #dbeafe; /* blue-100 */
-      transform: translateY(-4px) scale(1.2);
-      z-index: 10;
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
     }
     /* Button hover effect */
     .btn-blue-hover {
@@ -243,16 +236,16 @@
       nav ul {
         display: none;
       }
-      /* Invert hamburger menu position to left */
+      /* Hamburger menu on right */
       header nav {
-        justify-content: flex-start;
+        justify-content: space-between;
       }
       #mobile-menu-button {
-        order: 0;
-        margin-right: 1rem;
+        order: 1;
+        margin-left: 1rem;
       }
       a[aria-label="Logo GF with code icon"] {
-        order: 1;
+        order: 0;
       }
     }
     /* Typing effect container to fix height and prevent vertical shift */
@@ -364,6 +357,24 @@
     #hero > img {
       display: none !important;
     }
+    /* Remove hover scale effect on About section */
+    #about.hover-smooth:hover {
+      transform: none !important;
+      transition: none !important;
+      z-index: auto !important;
+    }
+    /* Remove all transition and hover effects from contact social icons */
+    #contact .social-icon {
+      transition: none !important;
+      transform: none !important;
+    }
+    #contact .social-icon:hover {
+      color: #374151 !important;
+      background-color: #e5e7eb !important;
+      box-shadow: none !important;
+      transform: none !important;
+      z-index: auto !important;
+    }
   </style>
  </head>
  <body class="bg-white text-gray-900">
@@ -447,7 +458,7 @@
     </div>
    </section>
    <section aria-label="About me section" class="w-full bg-white py-20 fade-slide-up slide-in-left flex justify-center px-4 sm:px-6" id="about">
-    <div class="max-w-4xl text-center hover-smooth">
+    <div class="max-w-4xl text-center">
      <h2 class="text-4xl font-extrabold mb-6">
       Sobre mim
      </h2>
@@ -603,6 +614,7 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            observer.unobserve(entry.target); // Unobserve after visible to prevent re-trigger and performance issues
           }
         });
       }, observerOptions);
