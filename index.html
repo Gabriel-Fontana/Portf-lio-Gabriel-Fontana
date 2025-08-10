@@ -131,6 +131,9 @@
       padding: 0;
       z-index: 60;
       flex-shrink: 0;
+      transition: border-color 0.3s ease;
+      border: 2px solid transparent;
+      border-radius: 4px;
     }
     #mobile-menu-button span {
       display: block;
@@ -139,8 +142,12 @@
       border-radius: 2px;
       transition: background-color 0.3s ease;
     }
+    #mobile-menu-button:hover,
     #mobile-menu-button:focus {
-      outline: 2px solid #007bff;
+      border-color: black;
+      outline: none;
+    }
+    #mobile-menu-button:focus {
       outline-offset: 2px;
     }
     /* Mobile menu panel */
@@ -149,8 +156,8 @@
       top: 0;
       left: 0;
       height: 100vh;
-      width: 75vw;
-      max-width: 300px;
+      width: 100vw;
+      max-width: 100vw;
       background-color: #007bff; /* Blue background */
       box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
       transform: translateX(-100%);
@@ -236,8 +243,8 @@
         padding-right: 1.5rem;
       }
       #mobile-menu {
-        width: 80vw;
-        max-width: 280px;
+        width: 100vw;
+        max-width: 100vw;
         padding: 1.5rem 1rem;
       }
     }
@@ -315,6 +322,13 @@
       max-width: 100vw;
       overflow-x: hidden;
     }
+    /* Remove background gradient and circles from hero, set gray background */
+    #hero {
+      background: #f3f4f6; /* Tailwind gray-100 */
+    }
+    #hero > img {
+      display: none !important;
+    }
   </style>
  </head>
  <body class="bg-white text-gray-900">
@@ -387,11 +401,7 @@
   <div aria-hidden="true" id="overlay" tabindex="-1">
   </div>
   <main>
-   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative bg-gradient-to-br from-white to-[#f0f6ff]" id="hero">
-    <!-- Blue circles behind -->
-    <img alt="Decorative large blue blurred circle" aria-hidden="true" class="absolute rounded-full opacity-30 blur-[80px] w-48 h-48 top-28 left-1/2 -translate-x-1/2 pointer-events-none select-none" decoding="async" height="192" loading="lazy" src="https://storage.googleapis.com/a1aa/image/4a9f72a1-1a41-4889-02e4-b6dba9c500fb.jpg" width="192"/>
-    <img alt="Decorative medium blue blurred circle" aria-hidden="true" class="absolute rounded-full opacity-20 blur-[60px] w-32 h-32 top-44 left-1/3 -translate-x-1/2 pointer-events-none select-none" decoding="async" height="128" loading="lazy" src="https://storage.googleapis.com/a1aa/image/b5745534-6202-479a-e519-30a7a54b76ba.jpg" width="128"/>
-    <img alt="Decorative small blue blurred circle" aria-hidden="true" class="absolute rounded-full opacity-20 blur-[60px] w-28 h-28 top-52 right-1/3 pointer-events-none select-none" decoding="async" height="112" loading="lazy" src="https://storage.googleapis.com/a1aa/image/d11ff0f7-0a90-4bea-bb36-fe3d67a007d0.jpg" width="112"/>
+   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative" id="hero">
     <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] fade-slide-up visible w-60 h-60 overflow-hidden hover-smooth max-w-[15rem] max-h-[15rem]">
      <img alt="Portrait of a man smiling wearing a denim shirt on a light background" class="rounded-full w-full h-full object-cover" decoding="async" height="240" loading="lazy" src="perfil.gabriel.png" width="240"/>
     </div>
@@ -665,6 +675,7 @@
       mobileMenu.classList.remove("open");
       overlay.classList.remove("visible");
       menuButton.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
     }
 
     function openMenu() {
@@ -672,6 +683,7 @@
       overlay.classList.add("visible");
       menuButton.setAttribute("aria-expanded", "true");
       mobileMenu.focus();
+      document.body.style.overflow = "hidden";
     }
 
     menuButton.addEventListener("click", () => {
