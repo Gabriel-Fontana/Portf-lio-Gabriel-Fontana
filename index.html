@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-br">
  <head>
   <meta charset="utf-8"/>
@@ -32,14 +31,14 @@
     /* Fade-in and slide-up animation */
     .fade-slide-up {
       opacity: 0;
-      transform: translateX(-50px);
+      transform: translateY(50px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
     .fade-slide-up.visible {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
-    /* Slide-in from left for all */
+    /* Slide-in from left for all except hero */
     .slide-in-left {
       opacity: 0;
       transform: translateX(-50px);
@@ -479,19 +478,19 @@
   <div aria-hidden="true" id="overlay" tabindex="-1">
   </div>
   <main>
-   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative fade-slide-up" id="hero">
-    <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] visible w-60 h-60 overflow-hidden hover-smooth max-w-[15rem] max-h-[15rem]">
+   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative fade-slide-up visible" id="hero">
+    <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] w-60 h-60 overflow-hidden max-w-[15rem] max-h-[15rem]">
      <img alt="Portrait of a man smiling wearing a denim shirt on a light background" class="rounded-full w-full h-full object-cover" decoding="async" height="240" loading="lazy" src="perfil.gabriel.png" width="240"/>
     </div>
-    <div class="max-w-xl text-center visible px-2 sm:px-0 fade-slide-up">
-     <h1 class="text-5xl font-extrabold leading-tight text-blue-600 hover-smooth" style="height: 3.25rem">
+    <div class="max-w-xl text-center px-2 sm:px-0">
+     <h1 class="text-5xl font-extrabold leading-tight text-blue-600" style="height: 3.25rem">
       <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text">
       </span>
      </h1>
-     <h2 class="text-5xl font-extrabold leading-tight text-black hover-smooth mt-1 sm:mt-0">
+     <h2 class="text-5xl font-extrabold leading-tight text-black mt-1 sm:mt-0">
       Gabriel Fontana
      </h2>
-     <p class="mt-4 text-xl text-gray-600 font-normal hover-smooth max-w-xs sm:max-w-none mx-auto">
+     <p class="mt-4 text-xl text-gray-600 font-normal max-w-xs sm:max-w-none mx-auto">
       Front-End Developer
      </p>
      <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto">
@@ -506,7 +505,7 @@
      </div>
     </div>
    </section>
-   <section aria-label="About me section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6" id="about">
+   <section aria-label="About me section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="about">
     <div class="max-w-4xl text-center">
      <h2 class="text-4xl font-extrabold mb-6">
       Sobre mim
@@ -521,7 +520,7 @@
      </p>
     </div>
    </section>
-   <section aria-label="Hard skills section" class="w-full bg-gray-100 py-20 fade-slide-up flex justify-center px-4 sm:px-6" id="skills">
+   <section aria-label="Hard skills section" class="w-full bg-gray-100 py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="skills">
     <div class="max-w-4xl text-center w-full">
      <h2 class="text-4xl font-extrabold mb-10 hover-smooth">
       Hard Skills
@@ -566,7 +565,7 @@
     </div>
    </section>
    <!-- Projects Section -->
-   <section aria-label="Projects section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6" id="projects">
+   <section aria-label="Projects section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="projects">
     <div class="max-w-7xl w-full">
      <h2 class="text-4xl font-extrabold mb-12 text-center text-black hover-smooth">
       Projetos
@@ -664,7 +663,7 @@
      </div>
     </div>
    </section>
-   <section aria-label="Contact section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6" id="contact">
+   <section aria-label="Contact section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="contact">
     <div class="max-w-2xl w-full">
      <h2 class="text-4xl font-extrabold mb-10 text-blue-600 text-center">
       Bora nos conectar?
@@ -736,9 +735,10 @@
         });
       }, observerOptions);
 
+      // Observe all fade-slide-up and slide-in-left except hero section
       document
         .querySelectorAll(
-          ".fade-slide-up, .slide-in-left"
+          ".fade-slide-up:not(#hero), .slide-in-left"
         )
         .forEach((el) => {
           observer.observe(el);
