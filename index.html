@@ -1,34 +1,40 @@
 <html lang="pt-br">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>
-   Gabriel Fontana
-  </title>
-  <link rel="shortcut icon" href="favicon.png" type="image/png"/>
-  <link rel="icon" href="favicon.png" type="image/png"/>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Gabriel Fontana</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/png" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
-   /* Reset and base */
-   *, *::before, *::after {
-     box-sizing: border-box;
-   }
-   html, body {
-     margin: 0;
-     padding: 0;
-     overflow-x: hidden;
-     width: 100vw;
-     max-width: 100vw;
-   }
-   body {
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      width: 100vw;
+      max-width: 100vw;
+      background-color: #f3f4f6; /* Tailwind gray-100 for entire background */
+    }
+    body {
       font-family: "Poppins", sans-serif;
       scroll-behavior: smooth;
-      background: white;
       overflow-x: hidden;
+      color: #1f2937; /* Tailwind gray-800 for better text contrast */
     }
-    /* Fade-in and slide-up animation */
     .fade-slide-up {
       opacity: 0;
       transform: translateY(50px);
@@ -38,7 +44,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Slide-in from left for all except hero */
     .slide-in-left {
       opacity: 0;
       transform: translateX(-50px);
@@ -48,36 +53,39 @@
       opacity: 1;
       transform: translateX(0);
     }
-    /* Smooth hover transitions */
     .hover-smooth:hover {
       transition: all 0.3s ease;
       transform: scale(1.05);
       z-index: 10;
     }
-    /* Social icons hover effect */
     .social-icon {
-      color: #374151; /* gray-700 */
+      color: #374151;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 56px;
       height: 56px;
       border-radius: 9999px;
-      background-color: #e5e7eb; /* gray-200 */
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background-color: #e5e7eb;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       text-decoration: none;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
       flex-shrink: 0;
-      transition: none !important;
-      transform: none !important;
+      transition: color 0.3s ease, background-color 0.3s ease;
       margin: 0 0.5rem;
     }
     .social-icon i {
       font-size: 28px;
       line-height: 1;
+      transition: color 0.3s ease;
     }
-    /* Button hover effect */
+    .social-icon:hover,
+    .social-icon:focus {
+      color: #2563eb !important;
+      background-color: #dbeafe !important;
+      outline: none;
+    }
     .btn-blue-hover {
       transition: background-color 0.3s ease, color 0.3s ease,
         transform 0.3s ease;
@@ -88,13 +96,12 @@
       transform: scale(1.05);
       z-index: 10;
     }
-    /* Fix white gap below fixed header */
     main {
-      margin-top: 64px; /* height of header */
+      margin-top: 64px;
       max-width: 100vw;
       overflow-x: hidden;
+      background-color: #f3f4f6; /* consistent gray background */
     }
-    /* Hamburger menu styles */
     #mobile-menu-button {
       display: none;
       cursor: pointer;
@@ -112,7 +119,6 @@
       align-items: center;
       justify-content: center;
     }
-    /* Hamburger lines container */
     #mobile-menu-button .hamburger-lines {
       position: relative;
       width: 24px;
@@ -125,13 +131,12 @@
       display: block;
       height: 3px;
       width: 100%;
-      background-color: #007bff; /* azul */
+      background-color: #007bff;
       border-radius: 2px;
       opacity: 1;
       transition: all 0.3s ease;
       will-change: transform, opacity;
     }
-    /* Animate hamburger to X when open */
     #mobile-menu-button.open .hamburger-lines span:nth-child(1) {
       transform: translateY(7.5px) rotate(45deg);
     }
@@ -141,7 +146,6 @@
     #mobile-menu-button.open .hamburger-lines span:nth-child(3) {
       transform: translateY(-7.5px) rotate(-45deg);
     }
-    /* Mobile menu panel */
     #mobile-menu {
       position: fixed;
       top: 0;
@@ -149,7 +153,7 @@
       height: 100vh;
       width: 100vw;
       max-width: 100vw;
-      background-color: #007bff; /* Blue background */
+      background-color: #007bff;
       box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
       transform: translateX(-100%);
       transition: transform 0.3s ease;
@@ -165,7 +169,6 @@
     #mobile-menu.open {
       transform: translateX(0);
     }
-    /* Overlay behind menu */
     #overlay {
       position: fixed;
       top: 0;
@@ -182,7 +185,6 @@
       opacity: 1;
       pointer-events: auto;
     }
-    /* Mobile menu links with border only on text */
     #mobile-menu a {
       display: inline-block;
       padding: 0.5rem 1.5rem;
@@ -196,7 +198,8 @@
       position: relative;
       margin: 0.5rem 0;
       box-shadow: none;
-      transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+      transition: border-color 0.3s ease, color 0.3s ease,
+        background-color 0.3s ease;
       text-decoration: none;
       max-width: max-content;
       white-space: nowrap;
@@ -213,9 +216,8 @@
       color: #e0e7ff;
       background-color: rgba(255 255 255 / 0.1);
       outline: none;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-    /* Show hamburger only on small screens */
     @media (max-width: 767px) {
       #mobile-menu-button {
         display: flex;
@@ -223,16 +225,82 @@
       nav ul {
         display: none;
       }
-      /* Hamburger menu on right */
       header nav {
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
       #mobile-menu-button {
-        order: 1;
-        margin-left: 1rem;
+        order: 2;
+        margin-left: auto;
       }
       a[aria-label="Logo GF with code icon"] {
-        order: 0;
+        display: flex;
+        position: relative;
+        transform: none;
+        margin-left: 0;
+        font-size: 1.5rem;
+        font-weight: 800;
+        gap: 0.25rem;
+        color: #2563eb;
+        user-select: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 60;
+        order: 1;
+      }
+      a[aria-label="Logo GF with code icon"] i {
+        font-size: 1.25rem;
+        color: #2563eb;
+      }
+      nav ul li a {
+        color: inherit !important;
+        font-weight: 400 !important;
+      }
+      /* Contact section adjustments for mobile */
+      #contact > div.max-w-7xl {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      #contact > div.max-w-7xl > div:first-child {
+        order: 1;
+        text-align: left; /* Changed from center to left */
+      }
+      #contact > div.max-w-7xl > div:first-child h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        text-align: left; /* Ensure heading is left aligned */
+      }
+      #contact > div.max-w-7xl > div:first-child p {
+        max-width: 100%;
+        margin-left: 0; /* Remove auto margin */
+        margin-right: 0; /* Remove auto margin */
+        text-align: left; /* Left align paragraph */
+      }
+      #contact > div.max-w-7xl > div:last-child {
+        order: 2;
+      }
+      /* Align phone, email, address text left with icons */
+      #contact > div.max-w-7xl > div:first-child > div.space-y-6 > div.flex.items-center.space-x-4 {
+        justify-content: flex-start; /* Align items to left */
+        text-align: left; /* Text left aligned */
+      }
+      #contact > div.max-w-7xl > div:first-child > div.space-y-6 > div.flex.items-center.space-x-4 > div {
+        text-align: left; /* Text left aligned */
+      }
+      /* Social icons smaller and centered */
+      #contact .social-icon {
+        width: 40px;
+        height: 40px;
+        margin: 0 0.25rem;
+      }
+      #contact .social-icon i {
+        font-size: 20px;
+      }
+      #contact > div.max-w-7xl > div:first-child > div[aria-label="Redes sociais"] {
+        justify-content: center !important;
       }
     }
     @media (min-width: 768px) {
@@ -241,9 +309,68 @@
       }
       nav ul {
         display: flex !important;
+        justify-content: center;
+        flex-grow: 1;
+        gap: 1.25rem;
+      }
+      header nav {
+        justify-content: center;
+        gap: 1.25rem;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      a[aria-label="Logo GF with code icon"] {
+        position: absolute;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        font-size: 2rem;
+        font-weight: 800;
+        gap: 0.25rem;
+        color: #2563eb;
+        user-select: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 60;
+      }
+      a[aria-label="Logo GF with code icon"] i {
+        font-size: 1.25rem;
+        color: #2563eb;
+      }
+      nav ul li a {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+        color: #1f2937;
+        font-weight: 400;
+      }
+      /* Contact section side by side and vertical center */
+      #contact > div.max-w-7xl {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12rem;
+        align-items: center;
+      }
+      #contact > div.max-w-7xl > div:first-child {
+        text-align: left;
+      }
+      #contact > div.max-w-7xl > div:first-child h3 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+      /* Social icons normal size and left aligned */
+      #contact .social-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 0.5rem;
+      }
+      #contact .social-icon i {
+        font-size: 28px;
+      }
+      #contact > div.max-w-7xl > div:first-child > div[aria-label="Redes sociais"] {
+        justify-content: flex-start !important;
       }
     }
-    /* Typing effect container to fix height and prevent vertical shift */
     .typing-effect {
       border-right: 2px solid #2563eb;
       white-space: nowrap;
@@ -252,14 +379,13 @@
       font-weight: 800;
       font-size: 2.5rem;
       max-width: 10ch;
-      height: 3.25rem; /* fixed height to prevent vertical jump */
+      height: 3.25rem;
       line-height: 3.25rem;
       vertical-align: bottom;
     }
-    /* Responsive adjustments */
     @media (max-width: 1023px) {
       main {
-        margin-top: 56px; /* slightly smaller header on tablets */
+        margin-top: 56px;
       }
       header nav {
         padding-left: 1.5rem;
@@ -272,7 +398,6 @@
       }
     }
     @media (max-width: 639px) {
-      /* Smaller font sizes for mobile */
       .typing-effect {
         font-size: 1.75rem;
         height: 2.25rem;
@@ -295,14 +420,12 @@
         font-size: 1rem;
         line-height: 1.5rem;
       }
-      /* Hero image smaller */
       #hero > div.relative.w-60.h-60 {
         width: 12rem;
         height: 12rem;
         border-width: 3px;
         box-shadow: 0 0 15px 3px rgba(96, 156, 255, 0.5);
       }
-      /* Buttons bigger touch targets */
       .btn-blue-hover {
         padding-left: 1.25rem !important;
         padding-right: 1.25rem !important;
@@ -310,418 +433,762 @@
         padding-bottom: 0.75rem !important;
         font-size: 1rem !important;
       }
-      /* Projects grid single column */
       #projects > div > div.grid {
         grid-template-columns: 1fr !important;
       }
-      /* Skills grid 2 columns */
       #skills ul.grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 1.5rem !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 1rem !important;
       }
-      /* Social icons smaller and spaced */
       #contact div.flex.justify-center.space-x-14 {
         gap: 2rem;
         font-size: 3rem;
       }
-      /* Header padding smaller */
       header nav {
         padding-left: 1rem;
         padding-right: 1rem;
       }
-      /* Nav links font smaller */
       nav ul li a {
         font-size: 0.875rem;
       }
     }
-    /* Prevent horizontal scroll on images */
     img {
       max-width: 100%;
       height: auto;
       display: block;
     }
-    /* Fix potential margin/padding causing overflow */
-    section, main, header, nav {
+    section,
+    main,
+    header,
+    nav {
       max-width: 100vw;
       overflow-x: hidden;
-    }
-    /* Remove background gradient and circles from hero, set gray background */
-    #hero {
-      background: #f3f4f6; /* Tailwind gray-100 */
+      background-color: #f3f4f6; /* consistent gray background */
     }
     #hero > img {
       display: none !important;
     }
-    /* Remove hover scale effect on About section */
     #about.hover-smooth:hover {
       transform: none !important;
       transition: none !important;
       z-index: auto !important;
     }
-    /* Remove all transition and hover effects from contact social icons */
     #contact .social-icon {
       transition: none !important;
       transform: none !important;
     }
     #contact .social-icon:hover {
-      color: #374151 !important;
-      background-color: #e5e7eb !important;
-      box-shadow: none !important;
-      transform: none !important;
-      z-index: auto !important;
+      animation: bounce 0.4s ease forwards;
     }
-    /* Close button styles inside mobile menu */
-    #mobile-menu-close-button {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 60;
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    #success-message,
+    #error-message {
+      transition: opacity 0.3s ease;
+    }
+    #success-message.hidden,
+    #error-message.hidden {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    #success-message:not(.hidden),
+    #error-message:not(.hidden) {
+      opacity: 1;
+      margin-top: 1rem;
+      height: auto;
+    }
+    /* Custom styles for Hard Skills text smaller and thinner */
+    #skills ul.grid li span {
+      font-size: 0.75rem; /* smaller font size */
+      font-weight: 300; /* lighter font weight */
+    }
+    /* Custom icon container for GitLab */
+    #gitlab-icon-container {
+      margin-top: 0.5rem;
       display: flex;
-      align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 9999px;
-      transition: background-color 0.3s ease;
+      width: 56px;
+      height: 56px;
     }
-    #mobile-menu-close-button:hover,
-    #mobile-menu-close-button:focus {
-      background-color: rgba(255 255 255 / 0.2);
-      outline: none;
+    #gitlab-icon-container svg {
+      width: 56px;
+      height: 56px;
+      fill: #fca326;
+    }
+    /* Add border and padding to skill items */
+    #skills ul.grid li {
+      border: 1px solid #d1d5db; /* Tailwind gray-300 */
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background-color: white;
+    }
+    /* Smaller project buttons */
+    .project-buttons a {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+      padding-top: 0.375rem !important;
+      padding-bottom: 0.375rem !important;
+      font-size: 0.75rem !important;
+      min-width: 100px !important;
+    }
+    /* Blue color for section titles except Projects */
+    #about h2,
+    #skills h2,
+    #contact h2 {
+      color: #2563eb;
+    }
+    /* Make Projects title blue */
+    #projects h2 {
+      color: #2563eb;
     }
   </style>
- </head>
- <body class="bg-white text-gray-900">
-  <!-- Header -->
-  <header class="w-full border-b border-gray-200 fixed top-0 left-0 z-50 bg-gray-100">
-   <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:px-8 md:py-4" id="navbar">
-    <a aria-label="Logo GF with code icon" class="text-blue-600 font-extrabold text-2xl select-none flex items-center space-x-1" href="#">
-     <span>
-      GF
-     </span>
-     <i class="fas fa-code text-blue-600 text-xl">
-     </i>
-    </a>
-    <ul class="hidden md:flex space-x-10 text-base font-normal text-black select-none">
-     <li>
-      <a class="hover:underline focus:underline focus:outline-none" href="#hero">
-       Início
+</head>
+<body>
+  <header
+    class="w-full border-b border-gray-300 fixed top-0 left-0 z-50 bg-gray-100"
+    id="header"
+  >
+    <nav
+      class="max-w-7xl mx-auto flex items-center px-6 py-4 md:px-8 md:py-4 relative"
+      id="navbar"
+    >
+      <a
+        aria-label="Logo GF with code icon"
+        class="text-blue-600 font-extrabold text-2xl select-none flex items-center space-x-1 absolute left-6 md:left-8"
+        href="#"
+      >
+        <span>GF</span>
+        <i class="fas fa-code text-blue-600 text-xl"></i>
       </a>
-     </li>
-     <li>
-      <a class="hover:underline focus:underline focus:outline-none" href="#about">
-       Sobre
-      </a>
-     </li>
-     <li>
-      <a class="hover:underline focus:underline focus:outline-none" href="#skills">
-       Skills
-      </a>
-     </li>
-     <li>
-      <a class="hover:underline focus:underline focus:outline-none" href="#projects">
-       Projetos
-      </a>
-     </li>
-     <li>
-      <a class="hover:underline focus:underline focus:outline-none" href="#contact">
-       Contato
-      </a>
-     </li>
-    </ul>
-    <button aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="true" aria-label="Abrir menu" aria-pressed="false" id="mobile-menu-button" type="button">
-     <div class="hamburger-lines" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-     </div>
-    </button>
-   </nav>
-  </header>
-  <!-- Mobile menu panel -->
-  <nav aria-label="Mobile menu" id="mobile-menu" tabindex="-1">
-   <button aria-label="Fechar menu" id="mobile-menu-close-button" type="button">
-    <i class="fas fa-times" aria-hidden="true"></i>
-   </button>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#hero" tabindex="0">
-    <span>
-     Início
-    </span>
-   </a>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#about" tabindex="0">
-    <span>
-     Sobre
-    </span>
-   </a>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#skills" tabindex="0">
-    <span>
-     Skills
-    </span>
-   </a>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#projects" tabindex="0">
-    <span>
-     Projetos
-    </span>
-   </a>
-   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#contact" tabindex="0">
-    <span>
-     Contato
-    </span>
-   </a>
-  </nav>
-  <!-- Overlay -->
-  <div aria-hidden="true" id="overlay" tabindex="-1">
-  </div>
-  <main>
-   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative fade-slide-up visible" id="hero">
-    <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] w-60 h-60 overflow-hidden max-w-[15rem] max-h-[15rem]">
-     <img alt="Portrait of a man smiling wearing a denim shirt on a light background" class="rounded-full w-full h-full object-cover" decoding="async" height="240" loading="lazy" src="perfil.gabriel.png" width="240"/>
-    </div>
-    <div class="max-w-xl text-center px-2 sm:px-0">
-     <h1 class="text-5xl font-extrabold leading-tight text-blue-600" style="height: 3.25rem">
-      <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text">
-      </span>
-     </h1>
-     <h2 class="text-5xl font-extrabold leading-tight text-black mt-1 sm:mt-0">
-      Gabriel Fontana
-     </h2>
-     <p class="mt-4 text-xl text-gray-600 font-normal max-w-xs sm:max-w-none mx-auto">
-      Front-End Developer
-     </p>
-     <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto">
-     </div>
-     <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
-      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="curriculo-dev-gabriel.pdf" role="button" tabindex="0">
-       Download CV
-      </a>
-      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="#projects" role="button" tabindex="0">
-       Projetos
-      </a>
-     </div>
-    </div>
-   </section>
-   <section aria-label="About me section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="about">
-    <div class="max-w-4xl text-center">
-     <h2 class="text-4xl font-extrabold mb-6">
-      Sobre mim
-     </h2>
-     <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
-      Olá! Sou Gabriel Fontana, estudante de Engenharia de Software. Sou
-      apaixonado por desenvolvimento web e criar soluções digitais práticas e
-      acessíveis. Valorizo a simplicidade, usabilidade e interfaces intuitivas
-      que realmente ajudam os usuários. Estou sempre aprendendo, focado em
-      front-end e interfaces envolventes. Aqui você verá meus projetos que
-      mostram minha dedicação à tecnologia.
-     </p>
-    </div>
-   </section>
-   <section aria-label="Hard skills section" class="w-full bg-gray-100 py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="skills">
-    <div class="max-w-4xl text-center w-full">
-     <h2 class="text-4xl font-extrabold mb-10 hover-smooth">
-      Hard Skills
-     </h2>
-     <ul class="grid grid-cols-2 sm:grid-cols-5 gap-8 max-w-xl mx-auto text-center" role="list">
-      <li aria-label="HTML skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-html5 fa-5x text-orange-600 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        HTML
-       </span>
-      </li>
-      <li aria-label="CSS skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-css3-alt fa-5x text-blue-600 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        CSS
-       </span>
-      </li>
-      <li aria-label="JavaScript skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-js-square fa-5x text-yellow-400 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        JavaScript
-       </span>
-      </li>
-      <li aria-label="Bootstrap skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-bootstrap fa-5x text-purple-600 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        Bootstrap
-       </span>
-      </li>
-      <li aria-label="React skill" class="flex flex-col items-center cursor-pointer hover-smooth" role="listitem" tabindex="0">
-       <i aria-hidden="true" class="fab fa-react fa-5x text-blue-400 mb-3">
-       </i>
-       <span class="text-lg font-medium">
-        React
-       </span>
-      </li>
-     </ul>
-    </div>
-   </section>
-   <!-- Projects Section -->
-   <section aria-label="Projects section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="projects">
-    <div class="max-w-7xl w-full">
-     <h2 class="text-4xl font-extrabold mb-12 text-center text-black hover-smooth">
-      Projetos
-     </h2>
-     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto" role="list">
-      <!-- Project Card 1 -->
-      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth" role="listitem">
-       <img alt="Imagem ilustrativa do Projeto Alpha mostrando interface de gerenciamento de tarefas" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="preview.ecomerce.png" width="384"/>
-       <div class="p-6 flex flex-col flex-grow">
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">
-         TechStore E-commerce
-        </h3>
-        <p class="text-gray-600 mb-6 flex-grow">
-         Projeto de uma loja virtual simples e moderna, desenvolvido durante o
-         bootcamp DevClub. Apresenta uma vitrine dinâmica de produtos eletrônicos
-         com filtro funcional por categorias, design responsivo e interação básica
-         utilizando HTML, CSS e JavaScript.
-        </p>
-        <div class="flex space-x-4 mt-auto flex-wrap gap-2">
-         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/TechStore" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fab fa-github">
-          </i>
-          <span>
-           GitHub
-          </span>
-         </a>
-         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://tech-store-sepia.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fas fa-external-link-alt">
-          </i>
-          <span>
-           Ver Projeto
-          </span>
-         </a>
+      <ul
+        class="hidden md:flex text-base font-normal text-gray-800 select-none flex-grow justify-center gap-3"
+      >
+        <li>
+          <a
+            class="hover:underline focus:underline focus:outline-none px-1"
+            href="#hero"
+            >Início</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:underline focus:underline focus:outline-none px-1"
+            href="#about"
+            >Sobre</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:underline focus:underline focus:outline-none px-1"
+            href="#skills"
+            >Skills</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:underline focus:underline focus:outline-none px-1"
+            href="#projects"
+            >Projetos</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:underline focus:underline focus:outline-none px-1"
+            href="#contact"
+            >Contato</a
+          >
+        </li>
+      </ul>
+      <button
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-haspopup="true"
+        aria-label="Abrir menu"
+        aria-pressed="false"
+        id="mobile-menu-button"
+        type="button"
+      >
+        <div class="hamburger-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-       </div>
-      </article>
-      <!-- Project Card 2 -->
-      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth" role="listitem">
-       <img alt="Imagem ilustrativa do Projeto Beta mostrando gráficos financeiros dinâmicos" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="Calculadora.Web.Responsiva.preview.jpg" width="384"/>
-       <div class="p-6 flex flex-col flex-grow">
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">
-         Calculadora Web Responsiva
-        </h3>
-        <p class="text-gray-600 mb-6 flex-grow">
-         Projeto de calculadora digital simples, desenvolvido com HTML, CSS e
-         JavaScript.
-        </p>
-        <div class="flex space-x-4 mt-auto flex-wrap gap-2">
-         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/Calculadora" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fab fa-github">
-          </i>
-          <span>
-           GitHub
-          </span>
-         </a>
-         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://calculadora-responsiva.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fas fa-external-link-alt">
-          </i>
-          <span>
-           Ver Projeto
-          </span>
-         </a>
-        </div>
-       </div>
-      </article>
-      <!-- Project Card 3 -->
-      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth" role="listitem">
-       <img alt="Imagem ilustrativa do Projeto Gamma mostrando editor de texto rico e sistema de comentários" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="tela.login.preview.png" width="384"/>
-       <div class="p-6 flex flex-col flex-grow">
-        <h3 class="text-2xl font-bold mb-2 text-gray-900">
-         Formulário de Login Responsivo
-        </h3>
-        <p class="text-gray-600 mb-6 flex-grow">
-         Formulário de login responsivo com layout moderno e adaptável para
-         diferentes dispositivos, desenvolvido com HTML e CSS.
-        </p>
-        <div class="flex space-x-4 mt-auto flex-wrap gap-2">
-         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://github.com/Gabriel-Fontana/formulario-login-css" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fab fa-github">
-          </i>
-          <span>
-           GitHub
-          </span>
-         </a>
-         <a class="btn-blue-hover flex items-center space-x-2 border border-blue-600 text-blue-600 rounded px-4 py-3 text-sm font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] justify-center" href="https://formulario-login-css.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
-          <i aria-hidden="true" class="fas fa-external-link-alt">
-          </i>
-          <span>
-           Ver Projeto
-          </span>
-         </a>
-        </div>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section aria-label="Contact section" class="w-full bg-white py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="contact">
-    <div class="max-w-2xl w-full">
-     <h2 class="text-4xl font-extrabold mb-10 text-blue-600 text-center">
-      Bora nos conectar?
-     </h2>
-     <form id="contact-form" class="bg-gray-50 p-8 rounded-lg shadow-md" novalidate action="https://formspree.io/f/xanbvnov" method="POST">
-      <div class="mb-5">
-       <label for="name" class="block mb-2 font-semibold text-gray-700">Nome completo</label>
-       <input type="text" id="name" name="name" required aria-required="true" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Seu nome completo" />
-       <p class="mt-1 text-sm text-red-600 hidden" id="name-error">Por favor, insira seu nome.</p>
-      </div>
-      <div class="mb-5">
-       <label for="email" class="block mb-2 font-semibold text-gray-700">Email</label>
-       <input type="email" id="email" name="email" required aria-required="true" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="seuemail@exemplo.com" />
-       <p class="mt-1 text-sm text-red-600 hidden" id="email-error">Por favor, insira um email válido.</p>
-      </div>
-      <div class="mb-5">
-       <label for="subject" class="block mb-2 font-semibold text-gray-700">Assunto</label>
-       <input type="text" id="subject" name="subject" required aria-required="true" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Assunto da mensagem" />
-       <p class="mt-1 text-sm text-red-600 hidden" id="subject-error">Por favor, insira o assunto.</p>
-      </div>
-      <div class="mb-5">
-       <label for="message" class="block mb-2 font-semibold text-gray-700">Mensagem</label>
-       <textarea id="message" name="message" rows="5" required aria-required="true" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Escreva sua mensagem aqui..."></textarea>
-       <p class="mt-1 text-sm text-red-600 hidden" id="message-error">Por favor, insira sua mensagem.</p>
-      </div>
-      <button type="submit" class="btn-blue-hover w-full border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition flex items-center justify-center" aria-label="Enviar mensagem" id="submit-button">
-       <span id="submit-button-text">Enviar Mensagem</span>
-       <svg id="submit-button-spinner" class="hidden animate-spin ml-3 h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-       </svg>
       </button>
-      <p aria-live="polite" class="mt-4 text-center text-green-600 font-semibold hidden" id="success-message">Mensagem enviada com sucesso!</p>
-      <p aria-live="polite" class="mt-4 text-center text-red-600 font-semibold hidden" id="error-message">Erro ao enviar a mensagem. Tente novamente mais tarde.</p>
-     </form>
-     <div aria-label="Redes sociais" class="flex justify-center mt-12 flex-wrap" role="list">
-      <a aria-label="Instagram" class="social-icon" href="https://www.instagram.com/mpx.dev/" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
-       <i aria-hidden="true" class="fab fa-instagram">
-       </i>
-      </a>
-      <a aria-label="LinkedIn" class="social-icon" href="https://www.linkedin.com/in/gabriel-fontana-803a84267/" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
-       <i aria-hidden="true" class="fab fa-linkedin">
-       </i>
-      </a>
-      <a aria-label="GitHub" class="social-icon" href="https://github.com/Gabriel-Fontana" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
-       <i aria-hidden="true" class="fab fa-github">
-       </i>
-      </a>
-      <a aria-label="WhatsApp" class="social-icon" href="https://wa.me/5519991163175" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
-       <i aria-hidden="true" class="fab fa-whatsapp">
-       </i>
-      </a>
-     </div>
-    </div>
-   </section>
+    </nav>
+  </header>
+  <nav aria-label="Mobile menu" id="mobile-menu" tabindex="-1">
+    <button aria-label="Fechar menu" id="mobile-menu-close-button" type="button" class="absolute top-4 right-4 text-white text-3xl">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#hero" tabindex="0"
+      ><span>Início</span></a
+    >
+    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#about" tabindex="0"
+      ><span>Sobre</span></a
+    >
+    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#skills" tabindex="0"
+      ><span>Skills</span></a
+    >
+    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#projects" tabindex="0"
+      ><span>Projetos</span></a
+    >
+    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#contact" tabindex="0"
+      ><span>Contato</span></a
+    >
+  </nav>
+  <div aria-hidden="true" id="overlay" tabindex="-1"></div>
+  <main>
+    <section
+      aria-label="Hero section introduction"
+      class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative fade-slide-up visible"
+      id="hero"
+    >
+      <div
+        class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] w-60 h-60 overflow-hidden max-w-[15rem] max-h-[15rem]"
+      >
+        <img
+          alt="Portrait of a man smiling wearing a denim shirt on a light background"
+          class="rounded-full w-full h-full object-cover"
+          decoding="async"
+          height="240"
+          loading="lazy"
+          src="perfil.gabriel.png"
+          width="240"
+        />
+      </div>
+      <div class="max-w-xl text-center px-2 sm:px-0">
+        <h1
+          class="text-5xl font-extrabold leading-tight text-blue-600"
+          style="height: 3.25rem"
+        >
+          <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text"></span>
+        </h1>
+        <h2 class="text-5xl font-extrabold leading-tight text-gray-800 mt-1 sm:mt-0">
+          Gabriel Fontana
+        </h2>
+        <p class="mt-4 text-xl text-gray-700 font-normal max-w-xs sm:max-w-none mx-auto">
+          Front-End Developer
+        </p>
+        <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto"></div>
+        <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
+          <a
+            class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center"
+            href="curriculo-dev-gabriel.pdf"
+            role="button"
+            tabindex="0"
+            >Download CV</a
+          >
+          <a
+            class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center"
+            href="#projects"
+            role="button"
+            tabindex="0"
+            >Projetos</a
+          >
+        </div>
+      </div>
+    </section>
+    <section
+      aria-label="About me section"
+      class="w-full py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left"
+      id="about"
+    >
+      <div class="max-w-4xl text-center">
+        <h2 class="text-4xl font-extrabold mb-6 text-blue-600">Sobre mim</h2>
+        <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+          Olá! Sou Gabriel Fontana, estudante de Engenharia de Software. Sou
+          apaixonado por desenvolvimento web e criar soluções digitais práticas e
+          acessíveis. Valorizo a simplicidade, usabilidade e interfaces intuitivas
+          que realmente ajudam os usuários. Estou sempre aprendendo, focado em
+          front-end e interfaces envolventes. Aqui você verá meus projetos que
+          mostram minha dedicação à tecnologia.
+        </p>
+      </div>
+    </section>
+    <section
+      aria-label="Hard skills section"
+      class="w-full py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left"
+      id="skills"
+    >
+      <div class="max-w-4xl text-center w-full">
+        <h2 class="text-4xl font-extrabold mb-10 text-blue-600 hover-smooth">Hard Skills</h2>
+        <ul
+          class="grid grid-cols-3 sm:grid-cols-5 gap-6 max-w-xl mx-auto text-center"
+          role="list"
+        >
+          <li
+            aria-label="HTML skill"
+            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <i
+              aria-hidden="true"
+              class="fab fa-html5 fa-4x text-orange-600 mb-2"
+            ></i>
+            <span class="text-gray-800">HTML</span>
+          </li>
+          <li
+            aria-label="CSS skill"
+            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <i
+              aria-hidden="true"
+              class="fab fa-css3-alt fa-4x text-blue-600 mb-2"
+            ></i>
+            <span class="text-gray-800">CSS</span>
+          </li>
+          <li
+            aria-label="JavaScript skill"
+            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-yellow-400 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <i
+              aria-hidden="true"
+              class="fab fa-js-square fa-4x text-yellow-400 mb-2"
+            ></i>
+            <span class="text-gray-800">JavaScript</span>
+          </li>
+          <li
+            aria-label="Bootstrap skill"
+            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-purple-600 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <i
+              aria-hidden="true"
+              class="fab fa-bootstrap fa-4x text-purple-600 mb-2"
+            ></i>
+            <span class="text-gray-800">Bootstrap</span>
+          </li>
+          <li
+            aria-label="React skill"
+            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <i
+              aria-hidden="true"
+              class="fab fa-react fa-4x text-blue-400 mb-2"
+            ></i>
+            <span class="text-gray-800">React</span>
+          </li>
+          <li
+            aria-label="GitLab skill"
+            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-yellow-500 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <div id="gitlab-icon-container" aria-label="GitLab icon" role="img" title="GitLab">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" >
+                <path d="M22.945 10.75l-2.5-7.5a.5.5 0 00-.95 0l-2.5 7.5h-7.99l-2.5-7.5a.5.5 0 00-.95 0l-2.5 7.5a.5.5 0 00.18.6l10.5 7.5a.5.5 0 00.58 0l10.5-7.5a.5.5 0 00.18-.6z" fill="#fca326"/>
+              </svg>
+            </div>
+            <span class="text-gray-800 mt-2">GitLab</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section
+      aria-label="Projects section"
+      class="w-full py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left"
+      id="projects"
+    >
+      <div class="max-w-7xl w-full">
+        <h2
+          class="text-4xl font-extrabold mb-12 text-center text-blue-600 hover-smooth"
+        >
+          Projetos
+        </h2>
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto"
+          role="list"
+        >
+          <article
+            class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <img
+              alt="Imagem ilustrativa do Projeto Alpha mostrando interface de gerenciamento de tarefas"
+              class="w-full h-64 object-cover"
+              decoding="async"
+              height="256"
+              loading="lazy"
+              src="preview.ecomerce.png"
+              width="384"
+            />
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold mb-2 text-gray-900">
+                TechStore E-commerce
+              </h3>
+              <p class="text-gray-600 mb-6 flex-grow">
+                Projeto de uma loja virtual simples e moderna, desenvolvido durante
+                o bootcamp DevClub. Apresenta uma vitrine dinâmica de produtos
+                eletrônicos com filtro funcional por categorias, design responsivo
+                e interação básica utilizando HTML, CSS e JavaScript.
+              </p>
+              <div class="project-buttons flex space-x-3">
+                <a
+                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
+                  href="https://github.com/Gabriel-Fontana/TechStore"
+                  rel="noopener noreferrer"
+                  role="button"
+                  tabindex="0"
+                  target="_blank"
+                  ><i aria-hidden="true" class="fab fa-github"></i>
+                  <span>GitHub</span></a
+                >
+                <a
+                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
+                  href="https://tech-store-sepia.vercel.app/"
+                  rel="noopener noreferrer"
+                  role="button"
+                  tabindex="0"
+                  target="_blank"
+                  ><i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                  <span>Ver Projeto</span></a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <img
+              alt="Imagem ilustrativa do Projeto Beta mostrando gráficos financeiros dinâmicos"
+              class="w-full h-64 object-cover"
+              decoding="async"
+              height="256"
+              loading="lazy"
+              src="Calculadora.Web.Responsiva.preview.jpg"
+              width="384"
+            />
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold mb-2 text-gray-900">
+                Calculadora Web Responsiva
+              </h3>
+              <p class="text-gray-600 mb-6 flex-grow">
+                Projeto de calculadora digital simples, desenvolvido com HTML, CSS e
+                JavaScript.
+              </p>
+              <div class="project-buttons flex space-x-3">
+                <a
+                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
+                  href="https://github.com/Gabriel-Fontana/Calculadora"
+                  rel="noopener noreferrer"
+                  role="button"
+                  tabindex="0"
+                  target="_blank"
+                  ><i aria-hidden="true" class="fab fa-github"></i>
+                  <span>GitHub</span></a
+                >
+                <a
+                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
+                  href="https://calculadora-responsiva.vercel.app/"
+                  rel="noopener noreferrer"
+                  role="button"
+                  tabindex="0"
+                  target="_blank"
+                  ><i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                  <span>Ver Projeto</span></a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
+            role="listitem"
+            tabindex="0"
+          >
+            <img
+              alt="Imagem ilustrativa do Projeto Gamma mostrando editor de texto rico e sistema de comentários"
+              class="w-full h-64 object-cover"
+              decoding="async"
+              height="256"
+              loading="lazy"
+              src="tela.login.preview.jpg"
+              width="384"
+            />
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold mb-2 text-gray-900">
+                Formulário de Login Responsivo
+              </h3>
+              <p class="text-gray-600 mb-6 flex-grow">
+                Formulário de login responsivo com layout moderno e adaptável para
+                diferentes dispositivos, desenvolvido com HTML e CSS.
+              </p>
+              <div class="project-buttons flex space-x-3">
+                <a
+                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
+                  href="https://github.com/Gabriel-Fontana/formulario-login-css"
+                  rel="noopener noreferrer"
+                  role="button"
+                  tabindex="0"
+                  target="_blank"
+                  ><i aria-hidden="true" class="fab fa-github"></i>
+                  <span>GitHub</span></a
+                >
+                <a
+                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
+                  href="https://formulario-login-css.vercel.app/"
+                  rel="noopener noreferrer"
+                  role="button"
+                  tabindex="0"
+                  target="_blank"
+                  ><i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                  <span>Ver Projeto</span></a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section
+      aria-label="Contact section"
+      class="w-full py-20 fade-slide-up px-4 sm:px-6 slide-in-left"
+      id="contact"
+    >
+      <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-12">Contatos</h2>
+      <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 mx-auto">
+        <div class="flex flex-col justify-center space-y-8">
+          <h3 class="text-2xl md:text-4xl font-extrabold text-blue-600">Bora nos conectar?</h3>
+          <p class="text-gray-700 text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
+            Estou disponível para projetos, parcerias e oportunidades. Entre em contato
+            comigo através do formulário ou pelos canais abaixo. Será um prazer conversar!
+          </p>
+          <div class="space-y-6">
+            <div class="flex items-center space-x-4">
+              <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
+              <div>
+                <p class="font-semibold text-gray-900">Telefone</p>
+                <a href="tel:+5519991163175" class="text-blue-600 hover:underline"
+                  >+55 (19) 99116-3175</a
+                >
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <i class="fas fa-envelope text-blue-600 text-2xl"></i>
+              <div>
+                <p class="font-semibold text-gray-900">Email</p>
+                <a
+                  href="mailto:gabrielfontana.dev@hotmail.com"
+                  class="text-blue-600 hover:underline"
+                  >gabrielfontana.dev@hotmail.com</a
+                >
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
+              <div>
+                <p class="font-semibold text-gray-900">Endereço</p>
+                <address class="not-italic text-gray-700">
+                  Artur Nogueira, São Paulo - Brasil
+                </address>
+              </div>
+            </div>
+          </div>
+          <div aria-label="Redes sociais" class="flex space-x-6 mt-8" role="list">
+            <a
+              aria-label="Instagram"
+              class="social-icon"
+              href="https://www.instagram.com/mpx.dev/"
+              rel="noopener noreferrer"
+              role="listitem"
+              tabindex="0"
+              target="_blank"
+            >
+              <i aria-hidden="true" class="fab fa-instagram"></i>
+            </a>
+            <a
+              aria-label="LinkedIn"
+              class="social-icon"
+              href="https://www.linkedin.com/in/gabriel-fontana-803a84267/"
+              rel="noopener noreferrer"
+              role="listitem"
+              tabindex="0"
+              target="_blank"
+            >
+              <i aria-hidden="true" class="fab fa-linkedin"></i>
+            </a>
+            <a
+              aria-label="GitHub"
+              class="social-icon"
+              href="https://github.com/Gabriel-Fontana"
+              rel="noopener noreferrer"
+              role="listitem"
+              tabindex="0"
+              target="_blank"
+            >
+              <i aria-hidden="true" class="fab fa-github"></i>
+            </a>
+            <a
+              aria-label="WhatsApp"
+              class="social-icon"
+              href="https://wa.me/5519991163175"
+              rel="noopener noreferrer"
+              role="listitem"
+              tabindex="0"
+              target="_blank"
+            >
+              <i aria-hidden="true" class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <form
+            id="contact-form"
+            class="bg-white p-8 rounded-lg shadow-md"
+            novalidate
+            action="https://formspree.io/f/xanbvnov"
+            method="POST"
+          >
+            <div class="mb-5">
+              <label
+                for="name"
+                class="block mb-2 font-semibold text-gray-700"
+                >Nome completo</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                aria-required="true"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Seu nome completo"
+              />
+              <p class="mt-1 text-sm text-red-600 hidden" id="name-error">
+                Por favor, insira seu nome.
+              </p>
+            </div>
+            <div class="mb-5">
+              <label
+                for="email"
+                class="block mb-2 font-semibold text-gray-700"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-required="true"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="seuemail@exemplo.com"
+              />
+              <p class="mt-1 text-sm text-red-600 hidden" id="email-error">
+                Por favor, insira um email válido.
+              </p>
+            </div>
+            <div class="mb-5">
+              <label
+                for="subject"
+                class="block mb-2 font-semibold text-gray-700"
+                >Assunto</label
+              >
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                aria-required="true"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Assunto da mensagem"
+              />
+              <p class="mt-1 text-sm text-red-600 hidden" id="subject-error">
+                Por favor, insira o assunto.
+              </p>
+            </div>
+            <div class="mb-5">
+              <label
+                for="message"
+                class="block mb-2 font-semibold text-gray-700"
+                >Mensagem</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                aria-required="true"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Escreva sua mensagem aqui..."
+              ></textarea>
+              <p class="mt-1 text-sm text-red-600 hidden" id="message-error">
+                Por favor, insira sua mensagem.
+              </p>
+            </div>
+            <button
+              type="submit"
+              class="btn-blue-hover w-full border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition flex items-center justify-center"
+              aria-label="Enviar mensagem"
+              id="submit-button"
+            >
+              <span id="submit-button-text">Enviar Mensagem</span>
+              <svg
+                id="submit-button-spinner"
+                class="hidden animate-spin ml-3 h-5 w-5 text-current"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                ></path>
+              </svg>
+            </button>
+            <p
+              aria-live="polite"
+              class="mt-4 text-center text-green-600 font-semibold hidden"
+              id="success-message"
+              tabindex="-1"
+            >
+              Mensagem enviada com sucesso!
+            </p>
+            <p
+              aria-live="polite"
+              class="mt-4 text-center text-red-600 font-semibold hidden"
+              id="error-message"
+              tabindex="-1"
+            >
+              Erro ao enviar a mensagem. Tente novamente mais tarde.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
   <script>
-   // Intersection Observer for fade-slide-up animation
     document.addEventListener("DOMContentLoaded", () => {
       const observerOptions = {
         threshold: 0.1,
@@ -730,21 +1197,17 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target); // Unobserve after visible to prevent re-trigger and performance issues
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      // Observe all fade-slide-up and slide-in-left except hero section
       document
-        .querySelectorAll(
-          ".fade-slide-up:not(#hero), .slide-in-left"
-        )
+        .querySelectorAll(".fade-slide-up:not(#hero), .slide-in-left")
         .forEach((el) => {
           observer.observe(el);
         });
 
-      // Typing effect with typing and deleting loop for "Hi, I'm"
       const typingText = document.getElementById("typing-text");
       const text = "Hi, I'm";
       let index = 0;
@@ -757,7 +1220,7 @@
           index++;
           if (index === text.length) {
             isDeleting = true;
-            speed = 1000; // pause before deleting
+            speed = 1000;
           } else {
             speed = 150;
           }
@@ -766,7 +1229,7 @@
           index--;
           if (index === 0) {
             isDeleting = false;
-            speed = 500; // pause before typing again
+            speed = 500;
           } else {
             speed = 100;
           }
@@ -774,9 +1237,17 @@
         setTimeout(type, speed);
       }
       type();
+
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
     });
 
-    // Mobile menu toggle
     const menuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
     const overlay = document.getElementById("overlay");
@@ -813,12 +1284,10 @@
 
     closeButton.addEventListener("click", closeMenu);
 
-    // Close menu on link click
     mobileMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
 
-    // Accessibility: close menu on Escape key
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && mobileMenu.classList.contains("open")) {
         closeMenu();
@@ -826,24 +1295,23 @@
       }
     });
 
-    // Contact form handling (Formspree)
-    (function() {
-      const form = document.getElementById('contact-form');
+    (function () {
+      const form = document.getElementById("contact-form");
       if (!form) return;
 
-      const successMessage = document.getElementById('success-message');
-      const errorMessage = document.getElementById('error-message');
-      const submitButton = document.getElementById('submit-button');
-      const submitText = document.getElementById('submit-button-text');
-      const spinner = document.getElementById('submit-button-spinner');
+      const successMessage = document.getElementById("success-message");
+      const errorMessage = document.getElementById("error-message");
+      const submitButton = document.getElementById("submit-button");
+      const submitText = document.getElementById("submit-button-text");
+      const spinner = document.getElementById("submit-button-spinner");
 
       function showErrorElem(id) {
         const el = document.getElementById(id);
-        if (el) el.classList.remove('hidden');
+        if (el) el.classList.remove("hidden");
       }
       function hideErrorElem(id) {
         const el = document.getElementById(id);
-        if (el) el.classList.add('hidden');
+        if (el) el.classList.add("hidden");
       }
 
       function validateEmail(email) {
@@ -851,106 +1319,97 @@
         return re.test(String(email).toLowerCase());
       }
 
-      form.addEventListener('submit', async function(e) {
+      form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        // Hide success/error messages before validating
-        if (successMessage) successMessage.classList.add('hidden');
-        if (errorMessage) errorMessage.classList.add('hidden');
+        if (successMessage) successMessage.classList.add("hidden");
+        if (errorMessage) errorMessage.classList.add("hidden");
 
         let isValid = true;
 
-        // Fields
         const nameField = form.querySelector('[name="name"]');
         const emailField = form.querySelector('[name="email"]');
         const subjectField = form.querySelector('[name="subject"]');
         const messageField = form.querySelector('[name="message"]');
 
-        // Validate name
         if (!nameField || !nameField.value.trim()) {
-          showErrorElem('name-error');
+          showErrorElem("name-error");
           isValid = false;
         } else {
-          hideErrorElem('name-error');
+          hideErrorElem("name-error");
         }
 
-        // Validate email
         if (!emailField || !validateEmail(emailField.value.trim())) {
-          showErrorElem('email-error');
+          showErrorElem("email-error");
           isValid = false;
         } else {
-          hideErrorElem('email-error');
+          hideErrorElem("email-error");
         }
 
-        // Validate subject
         if (!subjectField || !subjectField.value.trim()) {
-          showErrorElem('subject-error');
+          showErrorElem("subject-error");
           isValid = false;
         } else {
-          hideErrorElem('subject-error');
+          hideErrorElem("subject-error");
         }
 
-        // Validate message
         if (!messageField || !messageField.value.trim()) {
-          showErrorElem('message-error');
+          showErrorElem("message-error");
           isValid = false;
         } else {
-          hideErrorElem('message-error');
+          hideErrorElem("message-error");
         }
 
         if (!isValid) return;
 
-        // disable button + show spinner
         if (submitButton) {
           submitButton.disabled = true;
-          submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+          submitButton.classList.add("opacity-50", "cursor-not-allowed");
         }
-        if (submitText) submitText.textContent = 'Enviando...';
-        if (spinner) spinner.classList.remove('hidden');
+        if (submitText) submitText.textContent = "Enviando...";
+        if (spinner) spinner.classList.remove("hidden");
 
         try {
           const formData = new FormData(form);
 
           const response = await fetch(form.action, {
-            method: form.method || 'POST',
+            method: form.method || "POST",
             body: formData,
             headers: {
-              'Accept': 'application/json'
-            }
+              Accept: "application/json",
+            },
           });
 
           if (response.ok) {
-            if (successMessage) successMessage.classList.remove('hidden');
-            if (errorMessage) errorMessage.classList.add('hidden');
+            if (successMessage) successMessage.classList.remove("hidden");
+            if (errorMessage) errorMessage.classList.add("hidden");
             form.reset();
-            // Move focus to success message for screen readers
             if (successMessage) {
-              successMessage.setAttribute('tabindex', '-1');
-              successMessage.focus({preventScroll: true});
+              successMessage.setAttribute("tabindex", "-1");
+              successMessage.focus({ preventScroll: true });
             }
           } else {
-            // Try to parse response for debugging (not required)
             try {
               const data = await response.json();
-              console.warn('Formspree error response:', data);
+              console.warn("Formspree error response:", data);
             } catch {}
-            if (errorMessage) errorMessage.classList.remove('hidden');
-            if (successMessage) successMessage.classList.add('hidden');
+            if (errorMessage) errorMessage.classList.remove("hidden");
+            if (successMessage) successMessage.classList.add("hidden");
           }
         } catch (err) {
-          console.error('Erro no envio do formulário:', err);
-          if (errorMessage) errorMessage.classList.remove('hidden');
-          if (successMessage) successMessage.classList.add('hidden');
+          console.error("Erro no envio do formulário:", err);
+          if (errorMessage) errorMessage.classList.remove("hidden");
+          if (successMessage) successMessage.classList.add("hidden");
         } finally {
           if (submitButton) {
             submitButton.disabled = false;
-            submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            submitButton.classList.remove("opacity-50", "cursor-not-allowed");
           }
-          if (submitText) submitText.textContent = 'Enviar Mensagem';
-          if (spinner) spinner.classList.add('hidden');
+          if (submitText) submitText.textContent = "Enviar Mensagem";
+          if (spinner) spinner.classList.add("hidden");
         }
       });
     })();
   </script>
- </body>
+</body>
 </html>
