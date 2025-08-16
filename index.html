@@ -559,50 +559,6 @@
     #projects h2 {
       color: #2563eb;
     }
-    /* New gradient background for hero section */
-    #hero {
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      color: white;
-    }
-    #hero p,
-    #hero h1,
-    #hero h2,
-    #hero a.btn-blue-hover {
-      color: white;
-    }
-    #hero a.btn-blue-hover {
-      border-color: white;
-      color: white;
-    }
-    #hero a.btn-blue-hover:hover {
-      background-color: white;
-      color: #1e3a8a;
-    }
-    #hero .btn-blue-hover svg {
-      color: #1e3a8a;
-    }
-    #hero .btn-blue-hover:focus {
-      outline-color: white;
-    }
-    #hero .btn-blue-hover:focus-visible {
-      outline-color: white;
-    }
-    #hero .btn-blue-hover:active {
-      background-color: #c7d2fe;
-      color: #1e3a8a;
-    }
-    #hero .btn-blue-hover:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    #hero .btn-blue-hover {
-      transition: background-color 0.3s ease, color 0.3s ease,
-        transform 0.3s ease;
-    }
-    #hero .btn-blue-hover:hover {
-      transform: scale(1.05);
-      z-index: 10;
-    }
   </style>
 </head>
 <body>
@@ -720,28 +676,28 @@
       </div>
       <div class="max-w-xl text-center px-2 sm:px-0">
         <h1
-          class="text-5xl font-extrabold leading-tight"
+          class="text-5xl font-extrabold leading-tight text-blue-600"
           style="height: 3.25rem"
         >
           <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text"></span>
         </h1>
-        <h2 class="text-5xl font-extrabold leading-tight mt-1 sm:mt-0">
+        <h2 class="text-5xl font-extrabold leading-tight text-gray-800 mt-1 sm:mt-0">
           Gabriel Fontana
         </h2>
-        <p class="mt-4 text-xl font-normal max-w-xs sm:max-w-none mx-auto">
+        <p class="mt-4 text-xl text-gray-700 font-normal max-w-xs sm:max-w-none mx-auto">
           Front-End Developer
         </p>
-        <div class="mt-6 w-20 h-1 rounded-full mx-auto"></div>
+        <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto"></div>
         <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
           <a
-            class="btn-blue-hover rounded px-5 py-3 text-base font-semibold transition min-w-[140px] text-center"
+            class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center"
             href="curriculo-dev-gabriel.pdf"
             role="button"
             tabindex="0"
             >Download CV</a
           >
           <a
-            class="btn-blue-hover rounded px-5 py-3 text-base font-semibold transition min-w-[140px] text-center"
+            class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center"
             href="#projects"
             role="button"
             tabindex="0"
