@@ -270,7 +270,7 @@
       }
       #contact > div.max-w-7xl > div:first-child h3 {
         font-size: 1.75rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem; /* Reduced margin-bottom for closer spacing */
         text-align: left; /* Ensure heading is left aligned */
       }
       #contact > div.max-w-7xl > div:first-child p {
@@ -278,9 +278,6 @@
         margin-left: 0; /* Remove auto margin */
         margin-right: 0; /* Remove auto margin */
         text-align: left; /* Left align paragraph */
-      }
-      #contact > div.max-w-7xl > div:last-child {
-        order: 2;
       }
       /* Align phone, email, address text left with icons */
       #contact > div.max-w-7xl > div:first-child > div.space-y-6 > div.flex.items-center.space-x-4 {
@@ -301,6 +298,15 @@
       }
       #contact > div.max-w-7xl > div:first-child > div[aria-label="Redes sociais"] {
         justify-content: center !important;
+      }
+      /* Reduce vertical spacing between first two mobile menu links */
+      #mobile-menu a:nth-child(2) {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+      }
+      #mobile-menu a:nth-child(3) {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
       }
     }
     @media (min-width: 768px) {
@@ -355,8 +361,8 @@
         text-align: left;
       }
       #contact > div.max-w-7xl > div:first-child h3 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
       }
       /* Social icons normal size and left aligned */
       #contact .social-icon {
@@ -553,6 +559,50 @@
     #projects h2 {
       color: #2563eb;
     }
+    /* New gradient background for hero section */
+    #hero {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+    }
+    #hero p,
+    #hero h1,
+    #hero h2,
+    #hero a.btn-blue-hover {
+      color: white;
+    }
+    #hero a.btn-blue-hover {
+      border-color: white;
+      color: white;
+    }
+    #hero a.btn-blue-hover:hover {
+      background-color: white;
+      color: #1e3a8a;
+    }
+    #hero .btn-blue-hover svg {
+      color: #1e3a8a;
+    }
+    #hero .btn-blue-hover:focus {
+      outline-color: white;
+    }
+    #hero .btn-blue-hover:focus-visible {
+      outline-color: white;
+    }
+    #hero .btn-blue-hover:active {
+      background-color: #c7d2fe;
+      color: #1e3a8a;
+    }
+    #hero .btn-blue-hover:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #hero .btn-blue-hover {
+      transition: background-color 0.3s ease, color 0.3s ease,
+        transform 0.3s ease;
+    }
+    #hero .btn-blue-hover:hover {
+      transform: scale(1.05);
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
@@ -670,28 +720,28 @@
       </div>
       <div class="max-w-xl text-center px-2 sm:px-0">
         <h1
-          class="text-5xl font-extrabold leading-tight text-blue-600"
+          class="text-5xl font-extrabold leading-tight"
           style="height: 3.25rem"
         >
           <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text"></span>
         </h1>
-        <h2 class="text-5xl font-extrabold leading-tight text-gray-800 mt-1 sm:mt-0">
+        <h2 class="text-5xl font-extrabold leading-tight mt-1 sm:mt-0">
           Gabriel Fontana
         </h2>
-        <p class="mt-4 text-xl text-gray-700 font-normal max-w-xs sm:max-w-none mx-auto">
+        <p class="mt-4 text-xl font-normal max-w-xs sm:max-w-none mx-auto">
           Front-End Developer
         </p>
-        <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto"></div>
+        <div class="mt-6 w-20 h-1 rounded-full mx-auto"></div>
         <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
           <a
-            class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center"
+            class="btn-blue-hover rounded px-5 py-3 text-base font-semibold transition min-w-[140px] text-center"
             href="curriculo-dev-gabriel.pdf"
             role="button"
             tabindex="0"
             >Download CV</a
           >
           <a
-            class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center"
+            class="btn-blue-hover rounded px-5 py-3 text-base font-semibold transition min-w-[140px] text-center"
             href="#projects"
             role="button"
             tabindex="0"
@@ -969,8 +1019,8 @@
     >
       <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-12">Contatos</h2>
       <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 mx-auto">
-        <div class="flex flex-col justify-center space-y-8">
-          <h3 class="text-2xl md:text-4xl font-extrabold text-blue-600">Bora nos conectar?</h3>
+        <div class="flex flex-col justify-center space-y-4">
+          <h3 class="text-xl md:text-3xl font-extrabold text-blue-600">Bora nos conectar?</h3>
           <p class="text-gray-700 text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
             Estou disponível para projetos, parcerias e oportunidades. Entre em contato
             comigo através do formulário ou pelos canais abaixo. Será um prazer conversar!
