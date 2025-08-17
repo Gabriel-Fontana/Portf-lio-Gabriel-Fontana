@@ -259,15 +259,18 @@
       #contact > div.max-w-7xl {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem; /* Reduced gap from 2rem to 1rem */
+        padding-left: 1rem; /* Added padding left */
+        padding-right: 1rem; /* Added padding right */
       }
       #contact > div.max-w-7xl > div:first-child {
         order: 1;
         text-align: left; /* Changed from center to left */
+        margin-bottom: 0; /* Remove bottom margin */
       }
       #contact > div.max-w-7xl > div:first-child h3 {
         font-size: 1.75rem;
-        margin-bottom: 0.5rem; /* Reduced margin-bottom for closer spacing */
+        margin-bottom: 0.25rem; /* Reduced margin-bottom for closer spacing */
         text-align: left; /* Ensure heading is left aligned */
       }
       #contact > div.max-w-7xl > div:first-child p {
@@ -275,8 +278,12 @@
         margin-left: 0; /* Remove auto margin */
         margin-right: 0; /* Remove auto margin */
         text-align: left; /* Left align paragraph */
+        margin-bottom: 0.5rem; /* Reduced bottom margin */
       }
       /* Align phone, email, address text left with icons */
+      #contact > div.max-w-7xl > div:first-child > div.space-y-6 {
+        gap: 1rem; /* Reduced vertical spacing from 1.5rem to 1rem */
+      }
       #contact > div.max-w-7xl > div:first-child > div.space-y-6 > div.flex.items-center.space-x-4 {
         justify-content: flex-start; /* Align items to left */
         text-align: left; /* Text left aligned */
@@ -295,6 +302,7 @@
       }
       #contact > div.max-w-7xl > div:first-child > div[aria-label="Redes sociais"] {
         justify-content: center !important;
+        margin-top: 0.5rem; /* Reduced top margin */
       }
       /* Reduce vertical spacing between first two mobile menu links */
       #mobile-menu a:nth-child(2) {
@@ -692,11 +700,11 @@
      <img alt="Portrait of a man smiling wearing a denim shirt on a light background" class="rounded-full w-full h-full object-cover" decoding="async" height="240" loading="lazy" src="perfil.gabriel.png" width="240"/>
     </div>
     <div class="max-w-xl text-center px-2 sm:px-0">
-     <h2 class="text-5xl font-extrabold leading-tight text-blue-600 mt-1 sm:mt-0">
+     <h2 class="text-5xl font-extrabold leading-tight text-gray-800 mt-1 sm:mt-0">
       Gabriel Fontana
      </h2>
      <p class="mt-4 text-xl text-gray-700 font-normal max-w-xs sm:max-w-none mx-auto">
-       Desenvolvedor Web
+       Developer Web
      </p>
      <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto">
      </div>
