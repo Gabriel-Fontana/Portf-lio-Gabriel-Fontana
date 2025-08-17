@@ -1,21 +1,18 @@
 <html lang="pt-br">
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <title>Gabriel Fontana</title>
-  <link rel="shortcut icon" href="favicon.png" type="image/png" />
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Gabriel Fontana
+  </title>
+  <link href="favicon.png" rel="shortcut icon" type="image/png"/>
+  <link href="favicon.png" rel="icon" type="image/png"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <style>
-    *,
+   *,
     *::before,
     *::after {
       box-sizing: border-box;
@@ -517,685 +514,658 @@
     }
     /* Custom styles for Hard Skills text smaller and thinner */
     #skills ul.grid li span {
-      font-size: 0.75rem; /* smaller font size */
+      font-size: 0.65rem; /* smaller font size */
       font-weight: 300; /* lighter font weight */
     }
-    /* Custom icon container for GitLab */
-    #gitlab-icon-container {
-      margin-top: 0.5rem;
-      display: flex;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-    }
-    #gitlab-icon-container svg {
-      width: 56px;
-      height: 56px;
-      fill: #fca326;
-    }
     /* Add border and padding to skill items */
-    #skills ul.grid li {
-      border: 1px solid #d1d5db; /* Tailwind gray-300 */
-      padding: 1rem;
-      border-radius: 0.5rem;
+    #skills .skills-container {
       background-color: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    /* Smaller project buttons */
-    .project-buttons a {
-      padding-left: 0.5rem !important;
-      padding-right: 0.5rem !important;
-      padding-top: 0.375rem !important;
-      padding-bottom: 0.375rem !important;
-      font-size: 0.75rem !important;
-      min-width: 100px !important;
+    #skills ul.grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    /* Blue color for section titles except Projects */
-    #about h2,
-    #skills h2,
-    #contact h2 {
-      color: #2563eb;
+    #skills ul.grid li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
-    /* Make Projects title blue */
-    #projects h2 {
-      color: #2563eb;
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .skill-icon {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+    .skill-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .skill-name {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: #1f2937;
+    }
+    .progress-bar {
+      height: 0.5rem;
+      border-radius: 9999px;
+      background-color: #e5e7eb; /* Tailwind gray-200 */
+      overflow: hidden;
+      width: 100%;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 9999px;
+      width: 0;
+      transition: width 1.5s ease-in-out;
+    }
+    /* Colors for each technology */
+    .progress-html {
+      background-color: #e34f26; /* HTML orange */
+    }
+    .progress-css {
+      background-color: #1572b6; /* CSS blue */
+    }
+    .progress-js {
+      background-color: #f7df1e; /* JS yellow */
+    }
+    .progress-bootstrap {
+      background-color: #7b2cff; /* Bootstrap purple */
+    }
+    .progress-react {
+      background-color: #61dafb; /* React light blue */
+    }
+    .progress-git {
+      background-color: #f05032; /* Git orange */
+    }
+    .progress-node {
+      background-color: #3c873a; /* Node.js green */
+    }
+    .progress-figma {
+      background-color: #f24e1e; /* Figma red/orange */
+    }
+    /* Responsive adjustments */
+    @media (max-width: 767px) {
+      #skills ul.grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
-</head>
-<body>
-  <header
-    class="w-full border-b border-gray-300 fixed top-0 left-0 z-50 bg-gray-100"
-    id="header"
-  >
-    <nav
-      class="max-w-7xl mx-auto flex items-center px-6 py-4 md:px-8 md:py-4 relative"
-      id="navbar"
-    >
-      <a
-        aria-label="Logo GF with code icon"
-        class="text-blue-600 font-extrabold text-2xl select-none flex items-center space-x-1 absolute left-6 md:left-8"
-        href="#"
-      >
-        <span>GF</span>
-        <i class="fas fa-code text-blue-600 text-xl"></i>
+ </head>
+ <body>
+  <header class="w-full border-b border-gray-300 fixed top-0 left-0 z-50 bg-gray-100" id="header">
+   <nav class="max-w-7xl mx-auto flex items-center px-6 py-4 md:px-8 md:py-4 relative" id="navbar">
+    <a aria-label="Logo GF with code icon" class="text-blue-600 font-extrabold text-2xl select-none flex items-center space-x-1 absolute left-6 md:left-8" href="#">
+     <span>
+      GF
+     </span>
+     <i class="fas fa-code text-blue-600 text-xl">
+     </i>
+    </a>
+    <ul class="hidden md:flex text-base font-normal text-gray-800 select-none flex-grow justify-center gap-3">
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none px-1" href="#hero">
+       Início
       </a>
-      <ul
-        class="hidden md:flex text-base font-normal text-gray-800 select-none flex-grow justify-center gap-3"
-      >
-        <li>
-          <a
-            class="hover:underline focus:underline focus:outline-none px-1"
-            href="#hero"
-            >Início</a
-          >
-        </li>
-        <li>
-          <a
-            class="hover:underline focus:underline focus:outline-none px-1"
-            href="#about"
-            >Sobre</a
-          >
-        </li>
-        <li>
-          <a
-            class="hover:underline focus:underline focus:outline-none px-1"
-            href="#skills"
-            >Skills</a
-          >
-        </li>
-        <li>
-          <a
-            class="hover:underline focus:underline focus:outline-none px-1"
-            href="#projects"
-            >Projetos</a
-          >
-        </li>
-        <li>
-          <a
-            class="hover:underline focus:underline focus:outline-none px-1"
-            href="#contact"
-            >Contato</a
-          >
-        </li>
-      </ul>
-      <button
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-        aria-haspopup="true"
-        aria-label="Abrir menu"
-        aria-pressed="false"
-        id="mobile-menu-button"
-        type="button"
-      >
-        <div class="hamburger-lines" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
-    </nav>
+     </li>
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none px-1" href="#about">
+       Sobre
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none px-1" href="#skills">
+       Skills
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none px-1" href="#projects">
+       Projetos
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline focus:underline focus:outline-none px-1" href="#contact">
+       Contato
+      </a>
+     </li>
+    </ul>
+    <button aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="true" aria-label="Abrir menu" aria-pressed="false" id="mobile-menu-button" type="button">
+     <div aria-hidden="true" class="hamburger-lines">
+      <span>
+      </span>
+      <span>
+      </span>
+      <span>
+      </span>
+     </div>
+    </button>
+   </nav>
   </header>
   <nav aria-label="Mobile menu" id="mobile-menu" tabindex="-1">
-    <button aria-label="Fechar menu" id="mobile-menu-close-button" type="button" class="absolute top-4 right-4 text-white text-3xl">
-      <i class="fas fa-times" aria-hidden="true"></i>
-    </button>
-    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#hero" tabindex="0"
-      ><span>Início</span></a
-    >
-    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#about" tabindex="0"
-      ><span>Sobre</span></a
-    >
-    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#skills" tabindex="0"
-      ><span>Skills</span></a
-    >
-    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#projects" tabindex="0"
-      ><span>Projetos</span></a
-    >
-    <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#contact" tabindex="0"
-      ><span>Contato</span></a
-    >
+   <button aria-label="Fechar menu" class="absolute top-4 right-4 text-white text-3xl" id="mobile-menu-close-button" type="button">
+    <i aria-hidden="true" class="fas fa-times">
+    </i>
+   </button>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#hero" tabindex="0">
+    <span>
+     Início
+    </span>
+   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#about" tabindex="0">
+    <span>
+     Sobre
+    </span>
+   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#skills" tabindex="0">
+    <span>
+     Skills
+    </span>
+   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#projects" tabindex="0">
+    <span>
+     Projetos
+    </span>
+   </a>
+   <a class="focus:outline-none focus:ring-2 focus:ring-white" href="#contact" tabindex="0">
+    <span>
+     Contato
+    </span>
+   </a>
   </nav>
-  <div aria-hidden="true" id="overlay" tabindex="-1"></div>
+  <div aria-hidden="true" id="overlay" tabindex="-1">
+  </div>
   <main>
-    <section
-      aria-label="Hero section introduction"
-      class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative fade-slide-up visible"
-      id="hero"
-    >
-      <div
-        class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] w-60 h-60 overflow-hidden max-w-[15rem] max-h-[15rem]"
-      >
-        <img
-          alt="Portrait of a man smiling wearing a denim shirt on a light background"
-          class="rounded-full w-full h-full object-cover"
-          decoding="async"
-          height="240"
-          loading="lazy"
-          src="perfil.gabriel.png"
-          width="240"
-        />
+   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative fade-slide-up visible" id="hero">
+    <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] w-60 h-60 overflow-hidden max-w-[15rem] max-h-[15rem]">
+     <img alt="Portrait of a man smiling wearing a denim shirt on a light background" class="rounded-full w-full h-full object-cover" decoding="async" height="240" loading="lazy" src="perfil.gabriel.png" width="240"/>
+    </div>
+    <div class="max-w-xl text-center px-2 sm:px-0">
+     <h2 class="text-5xl font-extrabold leading-tight text-blue-600 mt-1 sm:mt-0">
+      Gabriel Fontana
+     </h2>
+     <p class="mt-4 text-xl text-gray-700 font-normal max-w-xs sm:max-w-none mx-auto">
+       Desenvolvedor Web
+     </p>
+     <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto">
+     </div>
+     <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
+      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="curriculo-dev-gabriel.pdf" role="button" tabindex="0">
+       Download CV
+      </a>
+      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="#projects" role="button" tabindex="0">
+       Projetos
+      </a>
+     </div>
+    </div>
+   </section>
+   <section aria-label="About me professional portfolio section" class="w-full py-20 fade-slide-up flex flex-col justify-center px-6 sm:px-12 md:px-20 slide-in-left bg-white" id="about">
+    <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-3">
+     Sobre Mim
+    </h2>
+    <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-12">
+     Estudante de Engenharia de Software, em transição para a área de tecnologia, com foco em desenvolvimento web e design.
+    </p>
+    <div class="flex flex-col md:flex-row md:items-start md:gap-16 max-w-7xl mx-auto">
+     <div class="md:w-1/2 text-gray-700 text-left mb-12 md:mb-0 leading-relaxed text-lg">
+      <p class="mb-4">
+       Gabriel Fontana está em formação em Engenharia de Software. Possui experiência prática em HTML, CSS, JavaScript e React.
+      </p>
+      <p class="mb-4">
+       Tem interesse em avançar no back-end com Node.js e Java, buscando ampliar seus conhecimentos e habilidades.
+      </p>
+      <p class="mb-4">
+       Também se dedica ao design de interfaces, usabilidade e experiência do usuário (UI/UX), valorizando layouts funcionais e atrativos.
+      </p>
+      <p class="mb-4">
+       Busca oportunidades para aplicar suas habilidades em projetos reais, unindo programação e design para entregar soluções completas e eficazes.
+      </p>
+      <p class="font-semibold">
+       Cursando Engenharia de Software.
+      </p>
+     </div>
+     <div class="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="rounded-lg p-6" style="background-color: #e6f0ff;">
+       <div aria-hidden="true" class="text-4xl mb-4">
+        💻
+       </div>
+       <h3 class="text-xl font-semibold mb-2 text-gray-900">
+        Front-end
+       </h3>
+       <p class="text-gray-700 text-base">
+        Criação de interfaces modernas e responsivas utilizando HTML, CSS, JavaScript e React.
+       </p>
       </div>
-      <div class="max-w-xl text-center px-2 sm:px-0">
-        <h1
-          class="text-5xl font-extrabold leading-tight text-blue-600"
-          style="height: 3.25rem"
-        >
-          <span aria-atomic="true" aria-live="polite" class="typing-effect" id="typing-text"></span>
-        </h1>
-        <h2 class="text-5xl font-extrabold leading-tight text-gray-800 mt-1 sm:mt-0">
-          Gabriel Fontana
-        </h2>
-        <p class="mt-4 text-xl text-gray-700 font-normal max-w-xs sm:max-w-none mx-auto">
-          Front-End Developer
-        </p>
-        <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto"></div>
-        <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
-          <a
-            class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center"
-            href="curriculo-dev-gabriel.pdf"
-            role="button"
-            tabindex="0"
-            >Download CV</a
-          >
-          <a
-            class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center"
-            href="#projects"
-            role="button"
-            tabindex="0"
-            >Projetos</a
-          >
+      <div class="rounded-lg p-6" style="background-color: #e6ffe6;">
+       <div aria-hidden="true" class="text-4xl mb-4">
+        ⚙️
+       </div>
+       <h3 class="text-xl font-semibold mb-2 text-gray-900">
+        Back-end
+       </h3>
+       <p class="text-gray-700 text-base">
+        Aprendizado em lógica de programação, estruturas de dados e desenvolvimento com Node.js e Java.
+       </p>
+      </div>
+      <div class="rounded-lg p-6" style="background-color: #f2e6ff;">
+       <div aria-hidden="true" class="text-4xl mb-4">
+        🎨
+       </div>
+       <h3 class="text-xl font-semibold mb-2 text-gray-900">
+        Design
+       </h3>
+       <p class="text-gray-700 text-base">
+        Conhecimento em design de interfaces, usabilidade e experiência do usuário (UI/UX), criando layouts funcionais e atrativos.
+       </p>
+      </div>
+      <div class="rounded-lg p-6" style="background-color: #ffe6f2;">
+       <div aria-hidden="true" class="text-4xl mb-4">
+        🚀
+       </div>
+       <h3 class="text-xl font-semibold mb-2 text-gray-900">
+        Projetos Práticos
+       </h3>
+       <p class="text-gray-700 text-base">
+        Portfólio com aplicações como calculadora, tela de login, e-commerce simples e outros projetos em constante evolução.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section aria-label="Hard skills section" class="w-full py-20 fade-slide-up slide-in-left" id="skills">
+    <div class="skills-container">
+     <h2 class="text-3xl font-extrabold mb-2 text-center text-blue-600 hover-smooth">
+      Hardskills
+     </h2>
+     <p class="text-center text-gray-700 mb-10 max-w-xl mx-auto text-sm">
+      Habilidades desenvolvidas ao longo da minha trajetória em programação e desenvolvimento web.
+     </p>
+     <ul class="grid" role="list" style="grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem;">
+      <!-- HTML -->
+      <li aria-label="HTML skill with 100 percent proficiency" class="flex flex-col" role="listitem" tabindex="0">
+       <div class="skill-header">
+        <div aria-hidden="true" class="skill-icon" title="HTML5">
+         <img alt="Official HTML5 logo in orange color" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/>
         </div>
-      </div>
-    </section>
-    <section
-      aria-label="About me section"
-      class="w-full py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left"
-      id="about"
-    >
-      <div class="max-w-4xl text-center">
-        <h2 class="text-4xl font-extrabold mb-6 text-blue-600">Sobre mim</h2>
-        <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
-          Olá! Sou Gabriel Fontana, estudante de Engenharia de Software. Sou
-          apaixonado por desenvolvimento web e criar soluções digitais práticas e
-          acessíveis. Valorizo a simplicidade, usabilidade e interfaces intuitivas
-          que realmente ajudam os usuários. Estou sempre aprendendo, focado em
-          front-end e interfaces envolventes. Aqui você verá meus projetos que
-          mostram minha dedicação à tecnologia.
-        </p>
-      </div>
-    </section>
-    <section
-      aria-label="Hard skills section"
-      class="w-full py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left"
-      id="skills"
-    >
-      <div class="max-w-4xl text-center w-full">
-        <h2 class="text-4xl font-extrabold mb-10 text-blue-600 hover-smooth">Hard Skills</h2>
-        <ul
-          class="grid grid-cols-3 sm:grid-cols-5 gap-6 max-w-xl mx-auto text-center"
-          role="list"
-        >
-          <li
-            aria-label="HTML skill"
-            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <i
-              aria-hidden="true"
-              class="fab fa-html5 fa-4x text-orange-600 mb-2"
-            ></i>
-            <span class="text-gray-800">HTML</span>
-          </li>
-          <li
-            aria-label="CSS skill"
-            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <i
-              aria-hidden="true"
-              class="fab fa-css3-alt fa-4x text-blue-600 mb-2"
-            ></i>
-            <span class="text-gray-800">CSS</span>
-          </li>
-          <li
-            aria-label="JavaScript skill"
-            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-yellow-400 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <i
-              aria-hidden="true"
-              class="fab fa-js-square fa-4x text-yellow-400 mb-2"
-            ></i>
-            <span class="text-gray-800">JavaScript</span>
-          </li>
-          <li
-            aria-label="Bootstrap skill"
-            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-purple-600 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <i
-              aria-hidden="true"
-              class="fab fa-bootstrap fa-4x text-purple-600 mb-2"
-            ></i>
-            <span class="text-gray-800">Bootstrap</span>
-          </li>
-          <li
-            aria-label="React skill"
-            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <i
-              aria-hidden="true"
-              class="fab fa-react fa-4x text-blue-400 mb-2"
-            ></i>
-            <span class="text-gray-800">React</span>
-          </li>
-          <li
-            aria-label="GitLab skill"
-            class="flex flex-col items-center cursor-pointer hover-smooth p-4 rounded-lg shadow-md transition-shadow focus-within:ring-4 focus-within:ring-yellow-500 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <div id="gitlab-icon-container" aria-label="GitLab icon" role="img" title="GitLab">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" >
-                <path d="M22.945 10.75l-2.5-7.5a.5.5 0 00-.95 0l-2.5 7.5h-7.99l-2.5-7.5a.5.5 0 00-.95 0l-2.5 7.5a.5.5 0 00.18.6l10.5 7.5a.5.5 0 00.58 0l10.5-7.5a.5.5 0 00.18-.6z" fill="#fca326"/>
-              </svg>
-            </div>
-            <span class="text-gray-800 mt-2">GitLab</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section
-      aria-label="Projects section"
-      class="w-full py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left"
-      id="projects"
-    >
-      <div class="max-w-7xl w-full">
-        <h2
-          class="text-4xl font-extrabold mb-12 text-center text-blue-600 hover-smooth"
-        >
-          Projetos
-        </h2>
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto"
-          role="list"
-        >
-          <article
-            class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <img
-              alt="Imagem ilustrativa do Projeto Alpha mostrando interface de gerenciamento de tarefas"
-              class="w-full h-64 object-cover"
-              decoding="async"
-              height="256"
-              loading="lazy"
-              src="preview.ecomerce.png"
-              width="384"
-            />
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-2 text-gray-900">
-                TechStore E-commerce
-              </h3>
-              <p class="text-gray-600 mb-6 flex-grow">
-                Projeto de uma loja virtual simples e moderna, desenvolvido durante
+        <h3 class="skill-name">
+         HTML
+        </h3>
+       </div>
+       <div aria-label="Nível de conhecimento em HTML 100 por cento" class="progress-bar">
+        <div aria-hidden="true" class="progress-bar-fill progress-html" style="width: 0%;">
+        </div>
+       </div>
+       <span class="mt-1 text-right font-semibold text-gray-700">
+        100%
+       </span>
+      </li>
+      <!-- CSS -->
+      <li aria-label="CSS skill with 95 percent proficiency" class="flex flex-col" role="listitem" tabindex="0">
+       <div class="skill-header">
+        <div aria-hidden="true" class="skill-icon" title="CSS3">
+         <img alt="Official CSS3 logo in blue color" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"/>
+        </div>
+        <h3 class="skill-name">
+         CSS
+        </h3>
+       </div>
+       <div aria-label="Nível de conhecimento em CSS 95 por cento" class="progress-bar">
+        <div aria-hidden="true" class="progress-bar-fill progress-css" style="width: 0%;">
+        </div>
+       </div>
+       <span class="mt-1 text-right font-semibold text-gray-700">
+        95%
+       </span>
+      </li>
+      <!-- JavaScript -->
+      <li aria-label="JavaScript skill with 75 percent proficiency" class="flex flex-col" role="listitem" tabindex="0">
+       <div class="skill-header">
+        <div aria-hidden="true" class="skill-icon" title="JavaScript">
+         <img alt="Official JavaScript logo in yellow color" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/>
+        </div>
+        <h3 class="skill-name">
+         JavaScript
+        </h3>
+       </div>
+       <div aria-label="Nível de conhecimento em JavaScript 75 por cento" class="progress-bar">
+        <div aria-hidden="true" class="progress-bar-fill progress-js" style="width: 0%;">
+        </div>
+       </div>
+       <span class="mt-1 text-right font-semibold text-gray-700">
+        75%
+       </span>
+      </li>
+      <!-- Bootstrap -->
+      <li aria-label="Bootstrap skill with 85 percent proficiency" class="flex flex-col" role="listitem" tabindex="0">
+       <div class="skill-header">
+        <div aria-hidden="true" class="skill-icon" title="Bootstrap">
+         <img alt="Official Bootstrap logo in purple color" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"/>
+        </div>
+        <h3 class="skill-name">
+         Bootstrap
+        </h3>
+       </div>
+       <div aria-label="Nível de conhecimento em Bootstrap 85 por cento" class="progress-bar">
+        <div aria-hidden="true" class="progress-bar-fill progress-bootstrap" style="width: 0%;">
+        </div>
+       </div>
+       <span class="mt-1 text-right font-semibold text-gray-700">
+        85%
+       </span>
+      </li>
+      <!-- React -->
+      <li aria-label="React skill with 65 percent proficiency" class="flex flex-col" role="listitem" tabindex="0">
+       <div class="skill-header">
+        <div aria-hidden="true" class="skill-icon" title="React">
+         <img alt="Official React logo in light blue color" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"/>
+        </div>
+        <h3 class="skill-name">
+         React
+        </h3>
+       </div>
+       <div aria-label="Nível de conhecimento em React 65 por cento" class="progress-bar">
+        <div aria-hidden="true" class="progress-bar-fill progress-react" style="width: 0%;">
+        </div>
+       </div>
+       <span class="mt-1 text-right font-semibold text-gray-700">
+        65%
+       </span>
+      </li>
+      <!-- Git -->
+      <li aria-label="Git skill with 70 percent proficiency" class="flex flex-col" role="listitem" tabindex="0">
+       <div class="skill-header">
+        <div aria-hidden="true" class="skill-icon" title="Git">
+         <img alt="Official Git logo in orange color" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/>
+        </div>
+        <h3 class="skill-name">
+         Git
+        </h3>
+       </div>
+       <div aria-label="Nível de conhecimento em Git 70 por cento" class="progress-bar">
+        <div aria-hidden="true" class="progress-bar-fill progress-git" style="width: 0%;">
+        </div>
+       </div>
+       <span class="mt-1 text-right font-semibold text-gray-700">
+        70%
+       </span>
+      </li>
+      <!-- Node.js -->
+      <li aria-label="Node.js skill with 40 percent proficiency" class="flex flex-col" role="listitem" tabindex="0">
+       <div class="skill-header">
+        <div aria-hidden="true" class="skill-icon" title="Node.js">
+         <img alt="Official Node.js logo in green color" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"/>
+        </div>
+        <h3 class="skill-name">
+         Node.js
+        </h3>
+       </div>
+       <div aria-label="Nível de conhecimento em Node.js 40 por cento" class="progress-bar">
+        <div aria-hidden="true" class="progress-bar-fill progress-node" style="width: 0%;">
+        </div>
+       </div>
+       <span class="mt-1 text-right font-semibold text-gray-700">
+        40%
+       </span>
+      </li>
+      <!-- Figma -->
+      <li aria-label="Figma skill with 60 percent proficiency" class="flex flex-col" role="listitem" tabindex="0">
+       <div class="skill-header">
+        <div aria-hidden="true" class="skill-icon" title="Figma">
+         <img alt="Official Figma logo in multicolor" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/>
+        </div>
+        <h3 class="skill-name">
+         Figma
+        </h3>
+       </div>
+       <div aria-label="Nível de conhecimento em Figma 60 por cento" class="progress-bar">
+        <div aria-hidden="true" class="progress-bar-fill progress-figma" style="width: 0%;">
+        </div>
+       </div>
+       <span class="mt-1 text-right font-semibold text-gray-700">
+        60%
+       </span>
+      </li>
+     </ul>
+    </div>
+   </section>
+   <section aria-label="Projects section" class="w-full py-20 fade-slide-up flex justify-center px-4 sm:px-6 slide-in-left" id="projects">
+    <div class="max-w-7xl w-full">
+     <h2 class="text-4xl font-extrabold mb-12 text-center text-blue-600 hover-smooth">
+      Projetos
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto" role="list">
+      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50" role="listitem" tabindex="0">
+       <img alt="Imagem ilustrativa do Projeto Alpha mostrando interface de gerenciamento de tarefas" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="preview.ecomerce.png" width="384"/>
+       <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">
+         TechStore E-commerce
+        </h3>
+        <p class="text-gray-600 mb-6 flex-grow">
+         Projeto de uma loja virtual simples e moderna, desenvolvido durante
                 o bootcamp DevClub. Apresenta uma vitrine dinâmica de produtos
                 eletrônicos com filtro funcional por categorias, design responsivo
                 e interação básica utilizando HTML, CSS e JavaScript.
-              </p>
-              <div class="project-buttons flex space-x-3">
-                <a
-                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
-                  href="https://github.com/Gabriel-Fontana/TechStore"
-                  rel="noopener noreferrer"
-                  role="button"
-                  tabindex="0"
-                  target="_blank"
-                  ><i aria-hidden="true" class="fab fa-github"></i>
-                  <span>GitHub</span></a
-                >
-                <a
-                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
-                  href="https://tech-store-sepia.vercel.app/"
-                  rel="noopener noreferrer"
-                  role="button"
-                  tabindex="0"
-                  target="_blank"
-                  ><i aria-hidden="true" class="fas fa-external-link-alt"></i>
-                  <span>Ver Projeto</span></a
-                >
-              </div>
-            </div>
-          </article>
-          <article
-            class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <img
-              alt="Imagem ilustrativa do Projeto Beta mostrando gráficos financeiros dinâmicos"
-              class="w-full h-64 object-cover"
-              decoding="async"
-              height="256"
-              loading="lazy"
-              src="Calculadora.Web.Responsiva.preview.jpg"
-              width="384"
-            />
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-2 text-gray-900">
-                Calculadora Web Responsiva
-              </h3>
-              <p class="text-gray-600 mb-6 flex-grow">
-                Projeto de calculadora digital simples, desenvolvido com HTML, CSS e
+        </p>
+        <div class="project-buttons flex space-x-3">
+         <a class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center" href="https://github.com/Gabriel-Fontana/TechStore" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fab fa-github">
+          </i>
+          <span>
+           GitHub
+          </span>
+         </a>
+         <a class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center" href="https://tech-store-sepia.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fas fa-external-link-alt">
+          </i>
+          <span>
+           Ver Projeto
+          </span>
+         </a>
+        </div>
+       </div>
+      </article>
+      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50" role="listitem" tabindex="0">
+       <img alt="Imagem ilustrativa do Projeto Beta mostrando gráficos financeiros dinâmicos" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="Calculadora.Web.Responsiva.preview.jpg" width="384"/>
+       <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">
+         Calculadora Web Responsiva
+        </h3>
+        <p class="text-gray-600 mb-6 flex-grow">
+         Projeto de calculadora digital simples, desenvolvido com HTML, CSS e
                 JavaScript.
-              </p>
-              <div class="project-buttons flex space-x-3">
-                <a
-                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
-                  href="https://github.com/Gabriel-Fontana/Calculadora"
-                  rel="noopener noreferrer"
-                  role="button"
-                  tabindex="0"
-                  target="_blank"
-                  ><i aria-hidden="true" class="fab fa-github"></i>
-                  <span>GitHub</span></a
-                >
-                <a
-                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
-                  href="https://calculadora-responsiva.vercel.app/"
-                  rel="noopener noreferrer"
-                  role="button"
-                  tabindex="0"
-                  target="_blank"
-                  ><i aria-hidden="true" class="fas fa-external-link-alt"></i>
-                  <span>Ver Projeto</span></a
-                >
-              </div>
-            </div>
-          </article>
-          <article
-            class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50"
-            role="listitem"
-            tabindex="0"
-          >
-            <img
-              alt="Imagem ilustrativa do Projeto Gamma mostrando editor de texto rico e sistema de comentários"
-              class="w-full h-64 object-cover"
-              decoding="async"
-              height="256"
-              loading="lazy"
-              src="tela.login.preview.jpg"
-              width="384"
-            />
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-2 text-gray-900">
-                Formulário de Login Responsivo
-              </h3>
-              <p class="text-gray-600 mb-6 flex-grow">
-                Formulário de login responsivo com layout moderno e adaptável para
+        </p>
+        <div class="project-buttons flex space-x-3">
+         <a class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center" href="https://github.com/Gabriel-Fontana/Calculadora" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fab fa-github">
+          </i>
+          <span>
+           GitHub
+          </span>
+         </a>
+         <a class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center" href="https://calculadora-responsiva.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fas fa-external-link-alt">
+          </i>
+          <span>
+           Ver Projeto
+          </span>
+         </a>
+        </div>
+       </div>
+      </article>
+      <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50" role="listitem" tabindex="0">
+       <img alt="Imagem ilustrativa do Projeto Gamma mostrando editor de texto rico e sistema de comentários" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="tela.login.preview.jpg" width="384"/>
+       <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">
+         Formulário de Login Responsivo
+        </h3>
+        <p class="text-gray-600 mb-6 flex-grow">
+         Formulário de login responsivo com layout moderno e adaptável para
                 diferentes dispositivos, desenvolvido com HTML e CSS.
-              </p>
-              <div class="project-buttons flex space-x-3">
-                <a
-                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
-                  href="https://github.com/Gabriel-Fontana/formulario-login-css"
-                  rel="noopener noreferrer"
-                  role="button"
-                  tabindex="0"
-                  target="_blank"
-                  ><i aria-hidden="true" class="fab fa-github"></i>
-                  <span>GitHub</span></a
-                >
-                <a
-                  class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center"
-                  href="https://formulario-login-css.vercel.app/"
-                  rel="noopener noreferrer"
-                  role="button"
-                  tabindex="0"
-                  target="_blank"
-                  ><i aria-hidden="true" class="fas fa-external-link-alt"></i>
-                  <span>Ver Projeto</span></a
-                >
-              </div>
-            </div>
-          </article>
+        </p>
+        <div class="project-buttons flex space-x-3">
+         <a class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center" href="https://github.com/Gabriel-Fontana/formulario-login-css" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fab fa-github">
+          </i>
+          <span>
+           GitHub
+          </span>
+         </a>
+         <a class="btn-blue-hover flex items-center space-x-1 border border-blue-600 text-blue-600 rounded px-2 py-1 text-xs font-semibold hover:bg-blue-600 hover:text-white transition min-w-[100px] justify-center" href="https://formulario-login-css.vercel.app/" rel="noopener noreferrer" role="button" tabindex="0" target="_blank">
+          <i aria-hidden="true" class="fas fa-external-link-alt">
+          </i>
+          <span>
+           Ver Projeto
+          </span>
+         </a>
         </div>
-      </div>
-    </section>
-    <section
-      aria-label="Contact section"
-      class="w-full py-20 fade-slide-up px-4 sm:px-6 slide-in-left"
-      id="contact"
-    >
-      <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-12">Contatos</h2>
-      <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 mx-auto">
-        <div class="flex flex-col justify-center space-y-4">
-          <h3 class="text-xl md:text-3xl font-extrabold text-blue-600">Bora nos conectar?</h3>
-          <p class="text-gray-700 text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
-            Estou disponível para projetos, parcerias e oportunidades. Entre em contato
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section aria-label="Contact section" class="w-full py-20 fade-slide-up px-4 sm:px-6 slide-in-left" id="contact">
+    <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-12">
+     Contatos
+    </h2>
+    <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 mx-auto">
+     <div class="flex flex-col justify-center space-y-4">
+      <h3 class="text-xl md:text-3xl font-extrabold text-blue-600">
+       Bora nos conectar?
+      </h3>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
+       Estou disponível para projetos, parcerias e oportunidades. Entre em contato
             comigo através do formulário ou pelos canais abaixo. Será um prazer conversar!
-          </p>
-          <div class="space-y-6">
-            <div class="flex items-center space-x-4">
-              <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
-              <div>
-                <p class="font-semibold text-gray-900">Telefone</p>
-                <a href="tel:+5519991163175" class="text-blue-600 hover:underline"
-                  >+55 (19) 99116-3175</a
-                >
-              </div>
-            </div>
-            <div class="flex items-center space-x-4">
-              <i class="fas fa-envelope text-blue-600 text-2xl"></i>
-              <div>
-                <p class="font-semibold text-gray-900">Email</p>
-                <a
-                  href="mailto:gabrielfontana.dev@hotmail.com"
-                  class="text-blue-600 hover:underline"
-                  >gabrielfontana.dev@hotmail.com</a
-                >
-              </div>
-            </div>
-            <div class="flex items-center space-x-4">
-              <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
-              <div>
-                <p class="font-semibold text-gray-900">Endereço</p>
-                <address class="not-italic text-gray-700">
-                  Artur Nogueira, São Paulo - Brasil
-                </address>
-              </div>
-            </div>
-          </div>
-          <div aria-label="Redes sociais" class="flex space-x-6 mt-8" role="list">
-            <a
-              aria-label="Instagram"
-              class="social-icon"
-              href="https://www.instagram.com/mpx.dev/"
-              rel="noopener noreferrer"
-              role="listitem"
-              tabindex="0"
-              target="_blank"
-            >
-              <i aria-hidden="true" class="fab fa-instagram"></i>
-            </a>
-            <a
-              aria-label="LinkedIn"
-              class="social-icon"
-              href="https://www.linkedin.com/in/gabriel-fontana-803a84267/"
-              rel="noopener noreferrer"
-              role="listitem"
-              tabindex="0"
-              target="_blank"
-            >
-              <i aria-hidden="true" class="fab fa-linkedin"></i>
-            </a>
-            <a
-              aria-label="GitHub"
-              class="social-icon"
-              href="https://github.com/Gabriel-Fontana"
-              rel="noopener noreferrer"
-              role="listitem"
-              tabindex="0"
-              target="_blank"
-            >
-              <i aria-hidden="true" class="fab fa-github"></i>
-            </a>
-            <a
-              aria-label="WhatsApp"
-              class="social-icon"
-              href="https://wa.me/5519991163175"
-              rel="noopener noreferrer"
-              role="listitem"
-              tabindex="0"
-              target="_blank"
-            >
-              <i aria-hidden="true" class="fab fa-whatsapp"></i>
-            </a>
-          </div>
-        </div>
+      </p>
+      <div class="space-y-6">
+       <div class="flex items-center space-x-4">
+        <i class="fas fa-phone-alt text-blue-600 text-2xl">
+        </i>
         <div>
-          <form
-            id="contact-form"
-            class="bg-white p-8 rounded-lg shadow-md"
-            novalidate
-            action="https://formspree.io/f/xanbvnov"
-            method="POST"
-          >
-            <div class="mb-5">
-              <label
-                for="name"
-                class="block mb-2 font-semibold text-gray-700"
-                >Nome completo</label
-              >
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                aria-required="true"
-                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-                placeholder="Seu nome completo"
-              />
-              <p class="mt-1 text-sm text-red-600 hidden" id="name-error">
-                Por favor, insira seu nome.
-              </p>
-            </div>
-            <div class="mb-5">
-              <label
-                for="email"
-                class="block mb-2 font-semibold text-gray-700"
-                >Email</label
-              >
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                aria-required="true"
-                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-                placeholder="seuemail@exemplo.com"
-              />
-              <p class="mt-1 text-sm text-red-600 hidden" id="email-error">
-                Por favor, insira um email válido.
-              </p>
-            </div>
-            <div class="mb-5">
-              <label
-                for="subject"
-                class="block mb-2 font-semibold text-gray-700"
-                >Assunto</label
-              >
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                required
-                aria-required="true"
-                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-                placeholder="Assunto da mensagem"
-              />
-              <p class="mt-1 text-sm text-red-600 hidden" id="subject-error">
-                Por favor, insira o assunto.
-              </p>
-            </div>
-            <div class="mb-5">
-              <label
-                for="message"
-                class="block mb-2 font-semibold text-gray-700"
-                >Mensagem</label
-              >
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                required
-                aria-required="true"
-                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-                placeholder="Escreva sua mensagem aqui..."
-              ></textarea>
-              <p class="mt-1 text-sm text-red-600 hidden" id="message-error">
-                Por favor, insira sua mensagem.
-              </p>
-            </div>
-            <button
-              type="submit"
-              class="btn-blue-hover w-full border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition flex items-center justify-center"
-              aria-label="Enviar mensagem"
-              id="submit-button"
-            >
-              <span id="submit-button-text">Enviar Mensagem</span>
-              <svg
-                id="submit-button-spinner"
-                class="hidden animate-spin ml-3 h-5 w-5 text-current"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <circle
-                  class="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  stroke-width="4"
-                ></circle>
-                <path
-                  class="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                ></path>
-              </svg>
-            </button>
-            <p
-              aria-live="polite"
-              class="mt-4 text-center text-green-600 font-semibold hidden"
-              id="success-message"
-              tabindex="-1"
-            >
-              Mensagem enviada com sucesso!
-            </p>
-            <p
-              aria-live="polite"
-              class="mt-4 text-center text-red-600 font-semibold hidden"
-              id="error-message"
-              tabindex="-1"
-            >
-              Erro ao enviar a mensagem. Tente novamente mais tarde.
-            </p>
-          </form>
+         <p class="font-semibold text-gray-900">
+          Telefone
+         </p>
+         <a class="text-blue-600 hover:underline" href="tel:+5519991163175">
+          +55 (19) 99116-3175
+         </a>
         </div>
+       </div>
+       <div class="flex items-center space-x-4">
+        <i class="fas fa-envelope text-blue-600 text-2xl">
+        </i>
+        <div>
+         <p class="font-semibold text-gray-900">
+          Email
+         </p>
+         <a class="text-blue-600 hover:underline" href="mailto:gabrielfontana.dev@hotmail.com">
+          gabrielfontana.dev@hotmail.com
+         </a>
+        </div>
+       </div>
+       <div class="flex items-center space-x-4">
+        <i class="fas fa-map-marker-alt text-blue-600 text-2xl">
+        </i>
+        <div>
+         <p class="font-semibold text-gray-900">
+          Endereço
+         </p>
+         <address class="not-italic text-gray-700">
+          Artur Nogueira, São Paulo - Brasil
+         </address>
+        </div>
+       </div>
       </div>
-    </section>
+      <div aria-label="Redes sociais" class="flex space-x-6 mt-8" role="list">
+       <a aria-label="Instagram" class="social-icon" href="https://www.instagram.com/mpx.dev/" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
+        <i aria-hidden="true" class="fab fa-instagram">
+        </i>
+       </a>
+       <a aria-label="LinkedIn" class="social-icon" href="https://www.linkedin.com/in/gabriel-fontana-803a84267/" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
+        <i aria-hidden="true" class="fab fa-linkedin">
+        </i>
+       </a>
+       <a aria-label="GitHub" class="social-icon" href="https://github.com/Gabriel-Fontana" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
+        <i aria-hidden="true" class="fab fa-github">
+        </i>
+       </a>
+       <a aria-label="WhatsApp" class="social-icon" href="https://wa.me/5519991163175" rel="noopener noreferrer" role="listitem" tabindex="0" target="_blank">
+        <i aria-hidden="true" class="fab fa-whatsapp">
+        </i>
+       </a>
+      </div>
+     </div>
+     <div>
+      <form action="https://formspree.io/f/xanbvnov" class="bg-white p-8 rounded-lg shadow-md" id="contact-form" method="POST" novalidate="">
+       <div class="mb-5">
+        <label class="block mb-2 font-semibold text-gray-700" for="name">
+         Nome completo
+        </label>
+        <input aria-required="true" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" id="name" name="name" placeholder="Seu nome completo" required="" type="text"/>
+        <p class="mt-1 text-sm text-red-600 hidden" id="name-error">
+         Por favor, insira seu nome.
+        </p>
+       </div>
+       <div class="mb-5">
+        <label class="block mb-2 font-semibold text-gray-700" for="email">
+         Email
+        </label>
+        <input aria-required="true" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" id="email" name="email" placeholder="seuemail@exemplo.com" required="" type="email"/>
+        <p class="mt-1 text-sm text-red-600 hidden" id="email-error">
+         Por favor, insira um email válido.
+        </p>
+       </div>
+       <div class="mb-5">
+        <label class="block mb-2 font-semibold text-gray-700" for="subject">
+         Assunto
+        </label>
+        <input aria-required="true" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" id="subject" name="subject" placeholder="Assunto da mensagem" required="" type="text"/>
+        <p class="mt-1 text-sm text-red-600 hidden" id="subject-error">
+         Por favor, insira o assunto.
+        </p>
+       </div>
+       <div class="mb-5">
+        <label class="block mb-2 font-semibold text-gray-700" for="message">
+         Mensagem
+        </label>
+        <textarea aria-required="true" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" id="message" name="message" placeholder="Escreva sua mensagem aqui..." required="" rows="5"></textarea>
+        <p class="mt-1 text-sm text-red-600 hidden" id="message-error">
+         Por favor, insira sua mensagem.
+        </p>
+       </div>
+       <button aria-label="Enviar mensagem" class="btn-blue-hover w-full border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition flex items-center justify-center" id="submit-button" type="submit">
+        <span id="submit-button-text">
+         Enviar Mensagem
+        </span>
+        <svg aria-hidden="true" class="hidden animate-spin ml-3 h-5 w-5 text-current" fill="none" id="submit-button-spinner" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+         </circle>
+         <path class="opacity-75" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" fill="currentColor">
+         </path>
+        </svg>
+       </button>
+       <p aria-live="polite" class="mt-4 text-center text-green-600 font-semibold hidden" id="success-message" tabindex="-1">
+        Mensagem enviada com sucesso!
+       </p>
+       <p aria-live="polite" class="mt-4 text-center text-red-600 font-semibold hidden" id="error-message" tabindex="-1">
+        Erro ao enviar a mensagem. Tente novamente mais tarde.
+       </p>
+      </form>
+     </div>
+    </div>
+   </section>
   </main>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+   document.addEventListener("DOMContentLoaded", () => {
       const observerOptions = {
         threshold: 0.1,
       };
@@ -1203,7 +1173,8 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+          } else {
+            entry.target.classList.remove("visible");
           }
         });
       }, observerOptions);
@@ -1214,36 +1185,6 @@
           observer.observe(el);
         });
 
-      const typingText = document.getElementById("typing-text");
-      const text = "Hi, I'm";
-      let index = 0;
-      let isDeleting = false;
-      let speed = 150;
-
-      function type() {
-        if (!isDeleting) {
-          typingText.textContent = text.substring(0, index + 1);
-          index++;
-          if (index === text.length) {
-            isDeleting = true;
-            speed = 1000;
-          } else {
-            speed = 150;
-          }
-        } else {
-          typingText.textContent = text.substring(0, index - 1);
-          index--;
-          if (index === 0) {
-            isDeleting = false;
-            speed = 500;
-          } else {
-            speed = 100;
-          }
-        }
-        setTimeout(type, speed);
-      }
-      type();
-
       const header = document.getElementById("header");
       window.addEventListener("scroll", () => {
         if (window.scrollY > 20) {
@@ -1252,6 +1193,46 @@
           header.classList.remove("scrolled");
         }
       });
+
+      // Animate progress bars on skills section when visible
+      const skillsSection = document.getElementById("skills");
+      const progressBars = skillsSection.querySelectorAll(".progress-bar-fill");
+
+      const animateProgressBars = () => {
+        progressBars.forEach((bar) => {
+          if (bar.classList.contains("progress-html")) {
+            bar.style.width = "100%";
+          } else if (bar.classList.contains("progress-css")) {
+            bar.style.width = "95%";
+          } else if (bar.classList.contains("progress-js")) {
+            bar.style.width = "75%";
+          } else if (bar.classList.contains("progress-bootstrap")) {
+            bar.style.width = "85%";
+          } else if (bar.classList.contains("progress-react")) {
+            bar.style.width = "65%";
+          } else if (bar.classList.contains("progress-git")) {
+            bar.style.width = "70%";
+          } else if (bar.classList.contains("progress-node")) {
+            bar.style.width = "40%";
+          } else if (bar.classList.contains("progress-figma")) {
+            bar.style.width = "60%";
+          }
+        });
+      };
+
+      const skillsObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateProgressBars();
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      skillsObserver.observe(skillsSection);
     });
 
     const menuButton = document.getElementById("mobile-menu-button");
@@ -1417,5 +1398,5 @@
       });
     })();
   </script>
-</body>
+ </body>
 </html>
