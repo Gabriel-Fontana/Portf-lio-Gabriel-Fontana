@@ -313,6 +313,19 @@
         margin-top: 0.25rem;
         margin-bottom: 0.25rem;
       }
+      /* Hero section mobile layout: image above text */
+      #hero {
+        flex-direction: column !important;
+      }
+      #hero > div.relative.w-48.h-48,
+      #hero > div.relative.w-60.h-60 {
+        order: 1 !important;
+        margin-bottom: 1.5rem;
+      }
+      #hero > div.max-w-xl.text-left.px-2.sm\:px-0 {
+        order: 2 !important;
+        text-align: center;
+      }
     }
     @media (min-width: 768px) {
       #mobile-menu-button {
@@ -610,10 +623,102 @@
         grid-template-columns: 1fr;
       }
     }
+    /* Custom smaller sizes for desktop */
+    @media (min-width: 768px) {
+      #hero {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      #hero > div.relative.w-60.h-60 {
+        width: 12rem;
+        height: 12rem;
+        border-width: 3px;
+        box-shadow: 0 0 15px 3px rgba(96, 156, 255, 0.5);
+        order: 2;
+      }
+      #hero > div.max-w-xl.text-center.px-2.sm\:px-0 {
+        max-width: 50%;
+        text-align: left;
+        order: 1;
+      }
+      #hero h2.text-5xl.font-extrabold.leading-tight.text-gray-800.mt-1.sm\:mt-0 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+      }
+      #hero p.mt-4.text-xl.text-gray-700.font-normal.max-w-xs.sm\:max-w-none.mx-auto {
+        font-size: 1.125rem;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      #hero .btn-blue-hover.border.border-blue-600.text-blue-600.rounded.px-5.py-3.text-base.font-semibold.hover\:bg-blue-600.hover\:text-white.transition.min-w-\[140px\].text-center {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        font-size: 0.875rem;
+        min-width: 120px;
+      }
+      #hero .mt-6.w-20.h-1.bg-blue-600.rounded-full.mx-auto {
+        width: 4rem;
+        height: 0.25rem;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      /* Smaller icons in contact */
+      #contact .social-icon {
+        width: 40px;
+        height: 40px;
+        margin: 0 0.25rem;
+      }
+      #contact .social-icon i {
+        font-size: 20px;
+      }
+      /* Smaller skill icons */
+      #skills .skill-icon {
+        width: 24px;
+        height: 24px;
+      }
+      #skills .skill-name {
+        font-size: 0.75rem;
+      }
+      #skills .progress-bar {
+        height: 0.4rem;
+      }
+      #skills .progress-bar-fill {
+        transition: width 1.5s ease-in-out;
+      }
+      /* Smaller project cards text and buttons */
+      #projects h2.text-4xl.font-extrabold.mb-12.text-center.text-blue-600.hover-smooth {
+        font-size: 2rem;
+      }
+      #projects article.bg-white.rounded-lg.shadow-lg.p-0.flex.flex-col.justify-between.overflow-hidden.hover-smooth.focus-within\:ring-4.focus-within\:ring-blue-400.focus-within\:ring-opacity-50 {
+        font-size: 0.875rem;
+      }
+      #projects article h3.text-2xl.font-bold.mb-2.text-gray-900 {
+        font-size: 1.25rem;
+      }
+      #projects article p.text-gray-600.mb-6.flex-grow {
+        font-size: 0.875rem;
+      }
+      #projects .project-buttons a.btn-blue-hover.flex.items-center.space-x-1.border.border-blue-600.text-blue-600.rounded.px-2.py-1.text-xs.font-semibold.hover\:bg-blue-600.hover\:text-white.transition.min-w-\[100px\].justify-center {
+        font-size: 0.75rem;
+        min-width: 90px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+    }
   </style>
  </head>
  <body>
-  <header class="w-full border-b border-gray-300 fixed top-0 left-0 z-50 bg-gray-100" id="header">
+  <header class="w-full fixed top-0 left-0 z-50 bg-gray-100" id="header">
    <nav class="max-w-7xl mx-auto flex items-center px-6 py-4 md:px-8 md:py-4 relative" id="navbar">
     <a aria-label="Logo GF with code icon" class="text-blue-600 font-extrabold text-2xl select-none flex items-center space-x-1 absolute left-6 md:left-8" href="#">
      <span>
@@ -695,24 +800,24 @@
   <div aria-hidden="true" id="overlay" tabindex="-1">
   </div>
   <main>
-   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col items-center justify-center gap-8 relative fade-slide-up visible" id="hero">
-    <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] w-60 h-60 overflow-hidden max-w-[15rem] max-h-[15rem]">
+   <section aria-label="Hero section introduction" class="w-full h-screen max-w-full mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8 relative fade-slide-up visible" id="hero">
+    <div class="relative flex-shrink-0 rounded-full border-4 border-blue-400 shadow-[0_0_20px_4px_rgba(96,156,255,0.5)] w-48 h-48 md:w-60 md:h-60 overflow-hidden max-w-[15rem] max-h-[15rem] order-1 md:order-2 mb-6 md:mb-0">
      <img alt="Portrait of a man smiling wearing a denim shirt on a light background" class="rounded-full w-full h-full object-cover" decoding="async" height="240" loading="lazy" src="perfil.gabriel.png" width="240"/>
     </div>
-    <div class="max-w-xl text-center px-2 sm:px-0">
-     <h2 class="text-5xl font-extrabold leading-tight text-gray-800 mt-1 sm:mt-0">
+    <div class="max-w-xl text-left px-2 sm:px-0 order-2 md:order-1 text-center md:text-left">
+     <h2 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-800 mt-1 sm:mt-0">
       Gabriel Fontana
      </h2>
-     <p class="mt-4 text-xl text-gray-700 font-normal max-w-xs sm:max-w-none mx-auto">
-       Developer Web
+     <p class="mt-4 text-lg md:text-xl text-gray-700 font-normal max-w-full">
+      Front-End Developer 
      </p>
-     <div class="mt-6 w-20 h-1 bg-blue-600 rounded-full mx-auto">
+     <div class="mt-6 w-16 md:w-20 h-1 bg-blue-600 rounded-full mx-auto md:mx-0">
      </div>
-     <div class="mt-8 flex justify-center gap-4 flex-wrap px-2 sm:px-0">
-      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="curriculo-dev-gabriel.pdf" role="button" tabindex="0">
+     <div class="mt-8 flex justify-center md:justify-start gap-4 flex-wrap px-2 sm:px-0">
+      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-4 py-2 md:px-5 md:py-3 text-sm md:text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] text-center" href="curriculo-dev-gabriel.pdf" role="button" tabindex="0">
        Download CV
       </a>
-      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-5 py-3 text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[140px] text-center" href="#projects" role="button" tabindex="0">
+      <a class="btn-blue-hover border border-blue-600 text-blue-600 rounded px-4 py-2 md:px-5 md:py-3 text-sm md:text-base font-semibold hover:bg-blue-600 hover:text-white transition min-w-[120px] text-center" href="#projects" role="button" tabindex="0">
        Projetos
       </a>
      </div>
@@ -723,73 +828,11 @@
      Sobre Mim
     </h2>
     <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-12">
-     Estudante de Engenharia de Software, em transição para a área de tecnologia, com foco em desenvolvimento web e design.
+     Sou estudante de Engenharia de Software, focado em desenvolvimento web e criação de interfaces funcionais e atraentes. Tenho experiência com HTML, CSS, JavaScript e React, construindo projetos responsivos e bem estruturados que unem estética e usabilidade.
     </p>
-    <div class="flex flex-col md:flex-row md:items-start md:gap-16 max-w-7xl mx-auto">
-     <div class="md:w-1/2 text-gray-700 text-left mb-12 md:mb-0 leading-relaxed text-lg">
-      <p class="mb-4">
-       Gabriel Fontana está em formação em Engenharia de Software. Possui experiência prática em HTML, CSS, JavaScript e React.
-      </p>
-      <p class="mb-4">
-       Tem interesse em avançar no back-end com Node.js e Java, buscando ampliar seus conhecimentos e habilidades.
-      </p>
-      <p class="mb-4">
-       Também se dedica ao design de interfaces, usabilidade e experiência do usuário (UI/UX), valorizando layouts funcionais e atrativos.
-      </p>
-      <p class="mb-4">
-       Busca oportunidades para aplicar suas habilidades em projetos reais, unindo programação e design para entregar soluções completas e eficazes.
-      </p>
-      <p class="font-semibold">
-       Cursando Engenharia de Software.
-      </p>
-     </div>
-     <div class="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <div class="rounded-lg p-6" style="background-color: #e6f0ff;">
-       <div aria-hidden="true" class="text-4xl mb-4">
-        💻
-       </div>
-       <h3 class="text-xl font-semibold mb-2 text-gray-900">
-        Front-end
-       </h3>
-       <p class="text-gray-700 text-base">
-        Criação de interfaces modernas e responsivas utilizando HTML, CSS, JavaScript e React.
-       </p>
-      </div>
-      <div class="rounded-lg p-6" style="background-color: #e6ffe6;">
-       <div aria-hidden="true" class="text-4xl mb-4">
-        ⚙️
-       </div>
-       <h3 class="text-xl font-semibold mb-2 text-gray-900">
-        Back-end
-       </h3>
-       <p class="text-gray-700 text-base">
-        Aprendizado em lógica de programação, estruturas de dados e desenvolvimento com Node.js e Java.
-       </p>
-      </div>
-      <div class="rounded-lg p-6" style="background-color: #f2e6ff;">
-       <div aria-hidden="true" class="text-4xl mb-4">
-        🎨
-       </div>
-       <h3 class="text-xl font-semibold mb-2 text-gray-900">
-        Design
-       </h3>
-       <p class="text-gray-700 text-base">
-        Conhecimento em design de interfaces, usabilidade e experiência do usuário (UI/UX), criando layouts funcionais e atrativos.
-       </p>
-      </div>
-      <div class="rounded-lg p-6" style="background-color: #ffe6f2;">
-       <div aria-hidden="true" class="text-4xl mb-4">
-        🚀
-       </div>
-       <h3 class="text-xl font-semibold mb-2 text-gray-900">
-        Projetos Práticos
-       </h3>
-       <p class="text-gray-700 text-base">
-        Portfólio com aplicações como calculadora, tela de login, e-commerce simples e outros projetos em constante evolução.
-       </p>
-      </div>
-     </div>
-    </div>
+    <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto">
+     Busco expandir meus conhecimentos em Node.js e Java para atuar também no back-end, sempre aplicando boas práticas e lógica de programação. Me interesso por UI/UX, combinando criatividade e eficiência para entregar soluções que realmente agreguem valor ao usuário.
+    </p>
    </section>
    <section aria-label="Hard skills section" class="w-full py-20 fade-slide-up slide-in-left" id="skills">
     <div class="skills-container">
@@ -1012,7 +1055,7 @@
        </div>
       </article>
       <article class="bg-white rounded-lg shadow-lg p-0 flex flex-col justify-between overflow-hidden hover-smooth focus-within:ring-4 focus-within:ring-blue-400 focus-within:ring-opacity-50" role="listitem" tabindex="0">
-       <img alt="Imagem ilustrativa do Projeto Gamma mostrando editor de texto rico e sistema de comentários" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="tela.login.preview.jpg" width="384"/>
+       <img alt="Imagem ilustrativa do Projeto Gamma mostrando editor de texto rico e sistema de comentários" class="w-full h-64 object-cover" decoding="async" height="256" loading="lazy" src="tela.login.preview.png" width="384"/>
        <div class="p-6 flex flex-col flex-grow">
         <h3 class="text-2xl font-bold mb-2 text-gray-900">
          Formulário de Login Responsivo
